@@ -16,6 +16,7 @@ $router->filter('auth', function(){
 $router->get('/', function(){
     return "Home";
 });
+$router->get('home',[App\Controllers\HomeController::class,'index']);
 // khu vực cần quan tâm -----------
 // bắt đầu định nghĩa ra các đường dẫn
 // $router->get('/', [App\Controllers\BaseController::class,'home']);
