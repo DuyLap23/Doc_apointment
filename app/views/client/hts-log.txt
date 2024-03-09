@@ -1,0 +1,17 @@
+HTTrack3.49-2+htsswf+htsjava launched on Thu, 07 Mar 2024 21:39:43 at https://validtemplates.github.io/clinicom/index-1.html +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar
+(winhttrack -qwC2%Ps2u1%s%uN0%I0p3DaK0H0%kf2A25000%f#f -F "Mozilla/4.5 (compatible; HTTrack 3.0x; Windows 98)" -%F "<!-- Mirrored from %s%s by HTTrack Website Copier/3.x [XR&CO'2014], %s -->" -%l "en, *" https://validtemplates.github.io/clinicom/index-1.html -O1 "C:\My Web Sites\php-project" +*.png +*.gif +*.jpg +*.jpeg +*.css +*.js -ad.doubleclick.net/* -mime:application/foobar )
+
+Information, Warnings and Errors reported for this mirror:
+note:	the hts-log.txt file, and hts-cache folder, may contain sensitive information,
+	such as username/password authentication for websites mirrored in this project
+	do not share these files/folders if you want these information to remain private
+
+21:40:37	Error: 	"Not Found" (404) at link https://validtemplates.github.io/clinicom/assets/fonts/fa-brands-400.svg (from https://validtemplates.github.io/clinicom/assets/css/font-awesome.min.css)
+21:40:37	Error: 	"Not Found" (404) at link https://validtemplates.github.io/clinicom/assets/fonts/fa-regular-400.svg (from https://validtemplates.github.io/clinicom/assets/css/font-awesome.min.css)
+21:40:37	Error: 	"Not Found" (404) at link https://validtemplates.github.io/clinicom/assets/fonts/fa-solid-900.svg (from https://validtemplates.github.io/clinicom/assets/css/font-awesome.min.css)
+21:40:37	Error: 	"Not Found" (404) at link https://validtemplates.github.io/clinicom/assets/css/Flaticon.svg (from https://validtemplates.github.io/clinicom/assets/css/flaticon-set.css)
+21:40:37	Error: 	"Not Found" (404) at link https://validtemplates.github.io/clinicom/assets/css/owl.video.play.png (from https://validtemplates.github.io/clinicom/assets/css/owl.carousel.min.css)
+21:40:37	Error: 	"Not Found" (404) at link https://validtemplates.github.io/clinicom/assets/js/typed.js (from https://validtemplates.github.io/clinicom/index.html)
+
+HTTrack Website Copier/3.49-2 mirror complete in 55 seconds : 174 links scanned, 167 files written (10230231 bytes overall) [7895714 bytes received at 143558 bytes/sec], 3869250 bytes transferred using HTTP compression in 81 files, ratio 33%, 43.5 requests per connection
+(6 errors, 0 warnings, 0 messages)
