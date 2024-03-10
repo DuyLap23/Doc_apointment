@@ -20,8 +20,7 @@ class UserController extends BaseController
     {
         return $this->render('Admin.index');
     }
-    public function all()
-    {
-        return $this->render('Admin.index2');
+    public function UserDel($id){
+        $this->user->DeleteUser($id);
     }
 }

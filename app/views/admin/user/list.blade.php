@@ -74,7 +74,7 @@
                             </td>
                             <td>
                                 <a onclick="return confirm('Bạn có chắc chắn muốn xóa Tài Khoản này không?')"
-                                    href="={{ $usList->id }}"><button
+                                    href="{{ route('admin/user/del/'. $usList->id)}}"><button
                                         class="btn status pending">xóa</button></a>
                             </td>
                         </tr>

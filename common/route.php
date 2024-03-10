@@ -15,6 +15,7 @@ $router->filter('auth', function(){
 });
 
 $router->get('admin/user/list',[App\Controllers\UserController::class,'userSelect']);
+$router->get('admin/user/del/{id}',[App\Controllers\UserController::class,'UserDel']);
 $router->get('/',[App\Controllers\UserController::class,'index']);
 $router->get('b',[App\Controllers\UserController::class,'all']);
 // khu vực cần quan tâm -----------

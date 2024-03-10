@@ -11,4 +11,10 @@ class UserModel extends BaseModel
         $this->setQuery($sql);
         return $this->loadAllRows();
     }
+    public function DeleteUser($id)
+    {
+        $sql = "DELETE FROM $this->table WHERE id = ?";
+        $this->setQuery($sql);
+        return $this->execute([$id] );
+    }
 }
