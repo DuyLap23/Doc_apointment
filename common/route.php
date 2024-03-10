@@ -16,8 +16,8 @@ $router->filter('auth', function(){
 
 $router->get('admin/user/list',[App\Controllers\UserController::class,'userSelect']);
 $router->get('admin/user/del/{id}',[App\Controllers\UserController::class,'UserDel']);
-$router->get('/',[App\Controllers\UserController::class,'index']);
-$router->get('b',[App\Controllers\UserController::class,'all']);
+$router->get('/',[App\Controllers\HomeController::class,'home']);
+
 // khu vực cần quan tâm -----------
 // bắt đầu định nghĩa ra các đường dẫn
 // $router->get('/', [App\Controllers\BaseController::class,'home']);

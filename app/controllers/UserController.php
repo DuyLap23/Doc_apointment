@@ -18,7 +18,7 @@ class UserController extends BaseController
     }
     public function index()
     {
-        return $this->render('Admin.index');
+        return $this->render('admin.index');
     }
     public function UserDel($id){
         $this->user->DeleteUser($id);

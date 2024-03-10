@@ -5,9 +5,9 @@ class HomeController extends BaseController{
 
   
 
-    public function index()
+    public function home()
     {
-        return $this->render('Admin.index');
+        return $this->render('Admin.home.home');
     }
 }
 

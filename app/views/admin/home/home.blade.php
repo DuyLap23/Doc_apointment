@@ -1,4 +1,6 @@
-<main>
+@extends('layout.main')
+@section('content')
+	<main>
 	<div class="head-title">
 		<div class="left">
 			<h1>Tổng quan</h1>
@@ -20,7 +22,7 @@
 			<i class='bx bxs-calendar-check'></i>
 			<span class="text">
 				<?php foreach ($count_bill as $key => $bill):
-					extract($bill);
+	extract($bill);
 
 					?>
 					<h3>
@@ -35,7 +37,7 @@
 			<i class='bx bxs-group'></i>
 			<span class="text">
 				<?php foreach ($count_account as $key => $ac):
-					extract($ac);
+	extract($ac);
 
 					?>
 					<h3>
@@ -74,10 +76,10 @@
 				</thead>
 				<tbody>
 					<?php foreach ($loadAll_bill_home as $key => $bill):
-						extract($bill);
-						$kh = $bill["name"] . '<br>
+	extract($bill);
+	$kh = $bill["name"] . '<br>
                     	' . $bill["email"];
-						$trangthaidh = get_ttdh($bill["bill_startus"]);
+	$trangthaidh = get_ttdh($bill["bill_startus"]);
 						?>
 						<tr>
 							<td>
@@ -92,33 +94,33 @@
 							</td>
 							<td>
 								<!-- <select name="" id="" class=" <?php
-								if ($bill["bill_startus"] == 0) {
-									echo 'status completed';
-								} elseif ($bill["bill_startus"] == 1) {
-									echo 'status pending';
+	if ($bill["bill_startus"] == 0) {
+		echo 'status completed';
+	} elseif ($bill["bill_startus"] == 1) {
+		echo 'status pending';
 
-								} elseif ($bill["bill_startus"] == 2) {
-									echo 'status cancel';
-								} elseif ($bill["bill_startus"] == 3) {
-									echo 'status process';
-								} elseif ($bill["bill_startus"] == 4) {
-									echo 'status bluecheck';
-								} ?>">
+	} elseif ($bill["bill_startus"] == 2) {
+		echo 'status cancel';
+	} elseif ($bill["bill_startus"] == 3) {
+		echo 'status process';
+	} elseif ($bill["bill_startus"] == 4) {
+		echo 'status bluecheck';
+	} ?>">
 									<option value=""><?= $trangthaidh ?></option>
 								</select> -->
 								<span class=" <?php
-								if ($bill["bill_startus"] == 0) {
-									echo 'status completed';
-								} elseif ($bill["bill_startus"] == 1) {
-									echo 'status pending';
+	if ($bill["bill_startus"] == 0) {
+		echo 'status completed';
+	} elseif ($bill["bill_startus"] == 1) {
+		echo 'status pending';
 
-								} elseif ($bill["bill_startus"] == 2) {
-									echo 'status cancel';
-								} elseif ($bill["bill_startus"] == 3) {
-									echo 'status process';
-								} elseif ($bill["bill_startus"] == 4) {
-									echo 'status bluecheck';
-								} ?>">
+	} elseif ($bill["bill_startus"] == 2) {
+		echo 'status cancel';
+	} elseif ($bill["bill_startus"] == 3) {
+		echo 'status process';
+	} elseif ($bill["bill_startus"] == 4) {
+		echo 'status bluecheck';
+	} ?>">
 									<?= $trangthaidh ?>
 								</span>
 							</td>
@@ -130,3 +132,4 @@
 
 	</div>
 </main>
+@endsection

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +29,7 @@
 		</a>
 		<ul class="side-menu top">
 			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'home') ? 'active' : '' }}">
-				<a href="index.php?act=home">
+				<a href="{{ route('/')}}">
 					<i class='bx bxs-dashboard'></i>
 					<span class="text">Trang Chủ</span>
 				</a>
@@ -52,7 +51,7 @@
 			</li>
 
 			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === '') ? 'active' : '' }}">
-				<a href="{{ route('b') }}">
+				<a href="{{ route('admin/user/list') }}">
 					<i class='bx bxs-group'></i>
 					<span class="text">Tài Khoản</span>
 				</a>
