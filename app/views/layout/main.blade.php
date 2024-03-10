@@ -14,9 +14,7 @@
 	<link rel="stylesheet" href="path/to/boxicons.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<!-- My CSS -->
-	<link rel="stylesheet" href="../../../public/css_admin/style.css">
-	<link rel="stylesheet" href="../../../public/css_admin/listing.css">
-	<link rel="stylesheet" href="../../../public/css_admin/liststyle.css">
+	@include('layout.style')
 
 	<title>UniQue</title>
 </head>
@@ -31,7 +29,7 @@
 			<span class="text">UniQue</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="<?php echo (!isset($_GET['act']) || $_GET['act'] === 'home') ? 'active' : ''; ?>">
+			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'home') ? 'active' : '' }}">
 				<a href="index.php?act=home">
 					<i class='bx bxs-dashboard'></i>
 					<span class="text">Trang Chủ</span>
@@ -39,52 +37,52 @@
 			</li>
 
 
-			<li class="<?php echo (!isset($_GET['act']) || $_GET['act'] === 'listdm') ? 'active' : ''; ?>">
+			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'listdm') ? 'active' : '' }}">
 				<a href="index.php?act=listdm">
 					<i class='bx bxs-category'></i>
 					<span class="text">Danh Mục</span>
 				</a>
 			</li>
 
-			<li class="<?php echo (!isset($_GET['act']) || $_GET['act'] === 'listsp') ? 'active' : ''; ?>">
+			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'listsp') ? 'active' : '' }}">
 				<a href="index.php?act=listsp">
 					<i class='bx bxs-shopping-bag'></i>
 					<span class="text">Sản Phẩm</span>
 				</a>
 			</li>
 
-			<li class="<?php echo (!isset($_GET['act']) || $_GET['act'] === '') ? 'active' : ''; ?>">
-				<a href="index.php?act=listkhachhang">
+			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === '') ? 'active' : '' }}">
+				<a href="{{ route('b') }}">
 					<i class='bx bxs-group'></i>
-					<span class="text">Khách Hàng</span>
+					<span class="text">Tài Khoản</span>
 				</a>
 			</li>
-			<li class="<?php echo (!isset($_GET['act']) || $_GET['act'] === 'listbinhluan') ? 'active' : ''; ?>">
+			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'listbinhluan') ? 'active' : '' }}">
 				<a href="index.php?act=listbinhluan">
 					<i class='bx bxs-message-dots'></i>
 					<span class="text">Bình Luận</span>
 				</a>
 			</li>
-			<li class="<?php echo (!isset($_GET['act']) || $_GET['act'] === 'listdonhang') ? 'active' : ''; ?>">
+			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'listdonhang') ? 'active' : '' }}">
 				<a href="index.php?act=listdonhang">
 					<i class='bx bxs-shopping-bag-alt'></i>
 					<span class="text">Quản Lý Đơn Hàng</span>
 				</a>
 			</li>
-			<li class="<?php echo (!isset($_GET['act']) || $_GET['act'] === 'listthongke') ? 'active' : ''; ?>">
+			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'listthongke') ? 'active' : '' }}">
 				<a href="index.php?act=listthongke">
 					<i class='bx bxs-doughnut-chart'></i>
 					<span class="text">Thống Kê Doanh Thu</span>
 				</a>
 			</li>
-			<li class="<?php echo (!isset($_GET['act']) || $_GET['act'] === 'thongkedm') ? 'active' : ''; ?>">
+			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'thongkedm') ? 'active' : '' }}">
 				<a href="index.php?act=thongkedm">
 					<i class='bx bxs-chart'></i>
 					<span class="text">Thống Kê Sản phẩm</span>
 				</a>
 			</li>
 
-			<li class="<?php echo (!isset($_GET['act']) || $_GET['act'] === 'view') ? 'active' : ''; ?>">
+			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'view') ? 'active' : '' }}">
 				<a href="../index.php">
 					<i class='bx bxs-user'></i>
 					<span class="text">Trang Người Dùng</span>
@@ -108,3 +106,12 @@
 			<label for="switch-mode" class="switch-mode"></label>
 			</ul>
 		</nav>
+        @yield('content')
+		<script src="../../../../public/js/script.js"></script>
+<script src="../../../../public/js/sticky_sidebar.min.js"></script>
+<script src="../../../../public/js/specific_listing.js"></script>
+
+
+</body>
+
+</html>

@@ -13,10 +13,10 @@ $router->filter('auth', function(){
    
 
 });
-$router->get('/', function(){
-    return "Home";
-});
-$router->get('home',[App\Controllers\HomeController::class,'index']);
+
+$router->get('admin/user/list',[App\Controllers\UserController::class,'userSelect']);
+$router->get('/',[App\Controllers\UserController::class,'index']);
+$router->get('b',[App\Controllers\UserController::class,'all']);
 // khu vực cần quan tâm -----------
 // bắt đầu định nghĩa ra các đường dẫn
 // $router->get('/', [App\Controllers\BaseController::class,'home']);
