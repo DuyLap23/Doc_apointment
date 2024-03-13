@@ -28,7 +28,7 @@
 			<span class="text">UniQue</span>
 		</a>
 		<ul class="side-menu top">
-			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'home') ? 'active' : '' }}">
+			<li class="{{ (!isset($_GET['url']) || $_GET['url'] === '/') ? 'active' : '' }}">
 				<a href="{{ route('/')}}">
 					<i class='bx bxs-dashboard'></i>
 					<span class="text">Trang Chủ</span>
@@ -36,53 +36,53 @@
 			</li>
 
 
-			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'listdm') ? 'active' : '' }}">
-				<a href="index.php?act=listdm">
+			<li class="{{ (!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : '' }}">
+				<a href="{{ route('') }}">
 					<i class='bx bxs-category'></i>
 					<span class="text">Danh Mục</span>
 				</a>
 			</li>
 
-			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'listsp') ? 'active' : '' }}">
-				<a href="index.php?act=listsp">
+			<li class="{{ (!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : '' }}">
+				<a href="{{ route('') }}">
 					<i class='bx bxs-shopping-bag'></i>
 					<span class="text">Sản Phẩm</span>
 				</a>
 			</li>
 
-			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === '') ? 'active' : '' }}">
+			<li class="{{ (!isset($_GET['url']) || $_GET['url'] === 'admin/user/list') ? 'active' : ' ' }}">
 				<a href="{{ route('admin/user/list') }}">
 					<i class='bx bxs-group'></i>
 					<span class="text">Tài Khoản</span>
 				</a>
 			</li>
-			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'listbinhluan') ? 'active' : '' }}">
-				<a href="index.php?act=listbinhluan">
+			<li class="{{ (!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : '' }}">
+				<a href="{{ route('') }}">
 					<i class='bx bxs-message-dots'></i>
 					<span class="text">Bình Luận</span>
 				</a>
 			</li>
-			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'listdonhang') ? 'active' : '' }}">
-				<a href="index.php?act=listdonhang">
+			<li class="{{ (!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : '' }}">
+				<a href="{{ route('') }}">
 					<i class='bx bxs-shopping-bag-alt'></i>
 					<span class="text">Quản Lý Đơn Hàng</span>
 				</a>
 			</li>
-			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'listthongke') ? 'active' : '' }}">
-				<a href="index.php?act=listthongke">
+			<li class="{{ (!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : '' }}">
+				<a href="{{ route('') }}">
 					<i class='bx bxs-doughnut-chart'></i>
 					<span class="text">Thống Kê Doanh Thu</span>
 				</a>
 			</li>
-			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'thongkedm') ? 'active' : '' }}">
-				<a href="index.php?act=thongkedm">
+			<li class="{{ (!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : '' }}">
+				<a href="{{ route('') }}">
 					<i class='bx bxs-chart'></i>
 					<span class="text">Thống Kê Sản phẩm</span>
 				</a>
 			</li>
 
-			<li class="{{ (!isset($_GET['act']) || $_GET['act'] === 'view') ? 'active' : '' }}">
-				<a href="../index.php">
+			<li class="{{ (!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : '' }}">
+				<a href="{{ route('') }}">
 					<i class='bx bxs-user'></i>
 					<span class="text">Trang Người Dùng</span>
 				</a>

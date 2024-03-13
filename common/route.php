@@ -10,13 +10,12 @@ $router->filter('auth', function(){
     if(!isset($_SESSION['auth']) || empty($_SESSION['auth'])){
         header('location: ' . BASE_URL . 'login');die;
     }
-   
-
 });
 
 $router->get('admin/user/list',[App\Controllers\UserController::class,'userSelect']);
 $router->get('admin/user/del/{id}',[App\Controllers\UserController::class,'UserDel']);
 $router->get('/',[App\Controllers\HomeController::class,'home']);
+
 
 // khu vực cần quan tâm -----------
 // bắt đầu định nghĩa ra các đường dẫn

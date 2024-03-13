@@ -28,7 +28,7 @@
  <span class="text">UniQue</span>
  </a>
  <ul class="side-menu top">
- <li class="<?php echo \htmlentities((!isset($_GET['act']) || $_GET['act'] === 'home') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ <li class="<?php echo \htmlentities((!isset($_GET['url']) || $_GET['url'] === '/') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <a href="<?php echo \htmlentities(route('/')??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <i class='bx bxs-dashboard'></i>
  <span class="text">Trang Chủ</span>
@@ -36,53 +36,53 @@
  </li>
 
 
- <li class="<?php echo \htmlentities((!isset($_GET['act']) || $_GET['act'] === 'listdm') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
- <a href="index.php?act=listdm">
+ <li class="<?php echo \htmlentities((!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ <a href="<?php echo \htmlentities(route('')??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <i class='bx bxs-category'></i>
  <span class="text">Danh Mục</span>
  </a>
  </li>
 
- <li class="<?php echo \htmlentities((!isset($_GET['act']) || $_GET['act'] === 'listsp') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
- <a href="index.php?act=listsp">
+ <li class="<?php echo \htmlentities((!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ <a href="<?php echo \htmlentities(route('')??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <i class='bx bxs-shopping-bag'></i>
  <span class="text">Sản Phẩm</span>
  </a>
  </li>
 
- <li class="<?php echo \htmlentities((!isset($_GET['act']) || $_GET['act'] === '') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ <li class="<?php echo \htmlentities((!isset($_GET['url']) || $_GET['url'] === 'admin/user/list') ? 'active' : ' '??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <a href="<?php echo \htmlentities(route('admin/user/list')??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <i class='bx bxs-group'></i>
  <span class="text">Tài Khoản</span>
  </a>
  </li>
- <li class="<?php echo \htmlentities((!isset($_GET['act']) || $_GET['act'] === 'listbinhluan') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
- <a href="index.php?act=listbinhluan">
+ <li class="<?php echo \htmlentities((!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ <a href="<?php echo \htmlentities(route('')??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <i class='bx bxs-message-dots'></i>
  <span class="text">Bình Luận</span>
  </a>
  </li>
- <li class="<?php echo \htmlentities((!isset($_GET['act']) || $_GET['act'] === 'listdonhang') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
- <a href="index.php?act=listdonhang">
+ <li class="<?php echo \htmlentities((!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ <a href="<?php echo \htmlentities(route('')??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <i class='bx bxs-shopping-bag-alt'></i>
  <span class="text">Quản Lý Đơn Hàng</span>
  </a>
  </li>
- <li class="<?php echo \htmlentities((!isset($_GET['act']) || $_GET['act'] === 'listthongke') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
- <a href="index.php?act=listthongke">
+ <li class="<?php echo \htmlentities((!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ <a href="<?php echo \htmlentities(route('')??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <i class='bx bxs-doughnut-chart'></i>
  <span class="text">Thống Kê Doanh Thu</span>
  </a>
  </li>
- <li class="<?php echo \htmlentities((!isset($_GET['act']) || $_GET['act'] === 'thongkedm') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
- <a href="index.php?act=thongkedm">
+ <li class="<?php echo \htmlentities((!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ <a href="<?php echo \htmlentities(route('')??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <i class='bx bxs-chart'></i>
  <span class="text">Thống Kê Sản phẩm</span>
  </a>
  </li>
 
- <li class="<?php echo \htmlentities((!isset($_GET['act']) || $_GET['act'] === 'view') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
- <a href="../index.php">
+ <li class="<?php echo \htmlentities((!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : ''??'', ENT_QUOTES, 'UTF-8', false); ?>">
+ <a href="<?php echo \htmlentities(route('')??'', ENT_QUOTES, 'UTF-8', false); ?>">
  <i class='bx bxs-user'></i>
  <span class="text">Trang Người Dùng</span>
  </a>
