@@ -14,6 +14,8 @@ $router->filter('auth', function(){
 
 $router->get('admin/user/list',[App\Controllers\UserController::class,'userSelect']);
 $router->get('admin/user/del/{id}',[App\Controllers\UserController::class,'UserDel']);
+$router->get('admin/user/store',[App\Controllers\UserController::class,'Store']);
+$router->post('admin/user/create',[App\Controllers\UserController::class,'Create']);
 $router->get('/',[App\Controllers\HomeController::class,'home']);
 
 

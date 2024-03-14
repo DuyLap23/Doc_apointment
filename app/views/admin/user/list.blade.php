@@ -19,9 +19,12 @@
 
     <div class="table-data">
         <div class="order">
+
             <div class="head">
                 <h3>Quản Lý Tài Khoản</h3>
-
+                <div class="create">
+                    <button><a href="{{ route('admin/user/store') }}">Tạo Tài Khoản</a></button>
+                </div>
             </div>
             <table>
                 <thead>
@@ -55,13 +58,17 @@
                             </td>
                           
                             <td>
-                                {{ $usList->image }}
+                                <img src="../../images/{{ $usList->image }}" alt="" width="100px" height="100px">
                             </td>
                             <td>
                                 {{ $usList->address }}
                             </td>
                             <td>
-                                {{ $usList->gender }}
+                          @if($usList->gender == 0)Nam 
+                          @else Nữ
+                           @endif 
+                          
+                               
                             </td>
                             <td>
                                 {{ $usList->phonenumber }}
