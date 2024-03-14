@@ -50,7 +50,10 @@ class UserController extends BaseController
 
     public function UserDel($id)
     {
-        $this->user->DeleteUser($id);
+        $del =$this->user->DeleteUser($id);
+        if ($del) {
+            redirect('success', 'Xoa thanh cong', 'admin/user/list');
+        }
     }
 
 }
