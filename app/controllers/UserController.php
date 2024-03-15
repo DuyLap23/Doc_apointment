@@ -63,29 +63,32 @@ class UserController extends BaseController
 public function testlogin(){
     return $this ->render('account.login');
 }
-    public function login(){
-        
-        $email=$_POST['emailLogin'];
-        $password=md5($_POST['passwordLogin']);
-        $role = $this->login->checkuser($email, $password);
-       print_r($role);
-        // if( $role){
-        //     $_SESSION['email'] = $role['email'];
-        //     $_SESSION['password'] = $role['password'];
+public function login(){
+    $email = $_POST['emailLogin'];
+    $password = md5($_POST['passwordLogin']);
+    $role = $this->login->checkuser($email, $password);
 
-        //     $_SESSION['roleld'] = $role['roleld'];
-        //     $_SESSION['id'] = $role['id'];
-        //     $_SESSION['firstName'] = $role['firstName'];
-          
-        //     if ($_SESSION['roleld'] == "user") {
-        //         redirect('success', 'Đăng nhập thành công', 'admin/home');
-        //     } else {
-        //         redirect('success', 'Đăng nhập thành công', 'admin/home');
-        //     }
-            
-        // }
+    if($role){
+        // Lưu thông tin người dùng vào session
+        $_SESSION['email'] = $role['email'];
+        $_SESSION['roleld'] = $role['roleld'];
+        $_SESSION['id'] = $role['id'];
+        $_SESSION['lastName'] = $role['lastName'];
 
+        // Chuyển hướng người dùng đến trang tương ứng
+        if ($_SESSION['roleld'] == "user") {
+            redirect('success', 'Đăng nhập thành công', 'admin/home');
+        } else {
+            redirect('success', 'Đăng nhập thành công', 'admin/home');
+        }
+    } else {
+        // Nếu thông tin đăng nhập không hợp lệ, thông báo lỗi
+        $err = "Email hoặc mật khẩu không đúng!";
+        // Truyền thông báo lỗi vào view
+        return $this->render('account.login', compact('err'));
     }
+}
+
     public function registers (){
        $email = $_POST['email'];
        $password = md5($_POST['password']);
