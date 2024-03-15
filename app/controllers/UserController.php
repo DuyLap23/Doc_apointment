@@ -60,7 +60,7 @@ class UserController extends BaseController
             redirect('success', 'Xoa thanh cong', 'admin/user/list');
         }
     }
-    public function testlogin()
+    public function toLogin()
     {
         return $this->render('account.login');
     }
@@ -80,16 +80,18 @@ class UserController extends BaseController
                 // $_SESSION['id'] = $user['id'];
                 // $_SESSION['lastName'] = $user['lastName'];
                 $_SESSION['email'] = $user->email;
-                $_SESSION['roleld'] = $user->roleld;
+                $_SESSION['roleId'] = $user->roleId;
                 $_SESSION['id'] = $user->id;
                 $_SESSION['lastName'] = $user->lastName;
 
 
                 // Chuyển hướng người dùng đến trang tương ứng
-                if ($_SESSION['roleld'] == "user") {
+                if ($_SESSION['roleId'] == "admin") {
                     redirect('success', 'Đăng nhập thành công', '/');
-                } else {
+                } else if($_SESSION['roleId'] == "doctor") {
                     redirect('success', 'Đăng nhập thành công', 'admin/user/list');
+                }else{
+                    redirect('success', 'Đăng nhập này', 'admin/user/store');
                 }
             } else {
                 // Nếu thông tin đăng nhập không hợp lệ, thông báo lỗi

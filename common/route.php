@@ -18,7 +18,7 @@ $router->get('admin/user/del/{id}',[App\Controllers\UserController::class,'UserD
 $router->get('admin/user/store',[App\Controllers\UserController::class,'Store']);
 $router->post('admin/user/create',[App\Controllers\UserController::class,'Create']);
 $router->get('/',[App\Controllers\HomeController::class,'home']);
-$router->get('account/login',[App\Controllers\UserController::class,'testlogin']);
+$router->get('account/login',[App\Controllers\UserController::class,'toLogin']);
 $router->post('account/dangnhap',[App\Controllers\UserController::class,'login']);
 $router->get('account/register',[App\Controllers\UserController::class,'register']);
 

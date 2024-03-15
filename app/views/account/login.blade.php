@@ -1,6 +1,5 @@
 @extends('layout.main')
 @section('content')
-
 <main class="bg_gray">
 	<div class="container margin_30">
 		<div class="page_header">
@@ -21,7 +20,7 @@
 						<div class="divider"></div>
 						<form action="{{ route('account/dangnhap') }}" onsubmit="return sendDangnhap()" method="post">
 							<div class="form-group">
-								<input type="email" "
+								<input type="email" 
 									class="form-control emailLogin" name="emailLogin" id="email" placeholder="Email*">
 							</div>
 							<div class="err__login">
