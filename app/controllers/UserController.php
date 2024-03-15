@@ -1,14 +1,19 @@
 <?php
 namespace App\Controllers;
 
+
+
 use App\Models\UserModel;
+use App\Models\LoginModel;
 
 class UserController extends BaseController
 {
     protected $user;
+    protected $login;
     public function __construct()
     {
         $this->user = new UserModel();
+        $this->login = new LoginModel();
     }
     public function userSelect()
     {
@@ -54,6 +59,48 @@ class UserController extends BaseController
         if ($del) {
             redirect('success', 'Xoa thanh cong', 'admin/user/list');
         }
+    }
+public function testlogin(){
+    return $this ->render('account.login');
+}
+    public function login(){
+        
+        $email=$_POST['emailLogin'];
+        $password=md5($_POST['passwordLogin']);
+        $role = $this->login->checkuser($email, $password);
+       print_r($role);
+        // if( $role){
+        //     $_SESSION['email'] = $role['email'];
+        //     $_SESSION['password'] = $role['password'];
+
+        //     $_SESSION['roleld'] = $role['roleld'];
+        //     $_SESSION['id'] = $role['id'];
+        //     $_SESSION['firstName'] = $role['firstName'];
+          
+        //     if ($_SESSION['roleld'] == "user") {
+        //         redirect('success', 'Đăng nhập thành công', 'admin/home');
+        //     } else {
+        //         redirect('success', 'Đăng nhập thành công', 'admin/home');
+        //     }
+            
+        // }
+
+    }
+    public function registers (){
+       $email = $_POST['email'];
+       $password = md5($_POST['password']);
+       $lastName = $_POST['lastName'];
+       $address = $_POST['address'];
+       $phoneNumber = $_POST['phonenumber'];
+       $result = $this->login->register($email, $password, $lastName, $address, $phoneNumber);
+       if ($result) {
+           redirect('success', 'Đăng ký thành công', 'admin/home/home');
+
+       } else {
+           redirect('error', 'Đăng ký thất bại', 'admin/home/home');
+       }
+
+
     }
 
 }

@@ -1,3 +1,6 @@
+@extends('layout.main')
+@section('content')
+
 <main class="bg_gray">
 	<div class="container margin_30">
 		<div class="page_header">
@@ -16,16 +19,16 @@
 					<h3 class="client">Đã có tài khoản </h3>
 					<div class="form_container">
 						<div class="divider"></div>
-						<form action="index.php?act=account" onsubmit="return sendDangnhap()" method="post">
+						<form action="{{ route('account/dangnhap') }}" onsubmit="return sendDangnhap()" method="post">
 							<div class="form-group">
-								<input type="email" value="<?= !empty($email) ? $email : "" ?>"
+								<input type="email" "
 									class="form-control emailLogin" name="emailLogin" id="email" placeholder="Email*">
 							</div>
 							<div class="err__login">
 								<div class="email__errLogin"></div>
 							</div>
 							<div class="form-group">
-								<input type="password" value="<?= !empty($password) ? $password : "" ?>"
+								<input type="password" "
 									class="form-control passwordLogin" name="passwordLogin" id="password_in" value=""
 									placeholder="Password*">
 							</div>
@@ -58,27 +61,12 @@
 					<!-- /form_container -->
 				</div>
 				<!-- /box_account -->
-				<div class="row">
-					<div class="col-md-6 d-none d-lg-block">
-						<ul class="list_ok">
-							<li>Tìm địa điểm</li>
-							<li>Kiểm tra vị trí chất lượng</li>
-							<li>Bảo vệ dữ liệu</li>
-						</ul>
-					</div>
-					<div class="col-md-6 d-none d-lg-block">
-						<ul class="list_ok">
-							<li>Thanh toán an toàn</li>
-							<li>Hỗ trợ 24h</li>
-						</ul>
-					</div>
-				</div>
-				<!-- /row -->
+				
 			</div>
 			<div class="col-xl-6 col-lg-6 col-md-8">
 				<div class="box_account">
 					<h3 class="new_client">Người dùng mới </h3> <small class="float-right pt-2">* Phần bắt buộc</small>
-					<form action="index.php?act=account" onsubmit="return sendDangky()" method="post">
+					<form action="{{ route('account/register') }}" onsubmit="return sendDangky()" method="post">
 						<div class="form_container">
 							<div class="form-group">
 								<input type="email" class="form-control email" name="email" id="email_2"
@@ -98,7 +86,7 @@
 								<div class="row no-gutters">
 									<div class="col-6 pr-1">
 										<div class="form-group">
-											<input type="text" class="form-control name" name="name"
+											<input type="text" class="form-control name" name="lastName"
 												placeholder="Tên *">
 										</div>
 										<div class="err__login">
@@ -107,7 +95,7 @@
 									</div>
 									<div class="col-6 pl-1">
 										<div class="form-group">
-											<input type="number" class="form-control phone" name="phone"
+											<input type="number" class="form-control phone" name="phonenumber"
 												placeholder="Số điện thoại *">
 										</div>
 										<div class="err__login">
@@ -144,3 +132,4 @@
 	</div>
 	<!-- /container -->
 </main>
+@endsection
