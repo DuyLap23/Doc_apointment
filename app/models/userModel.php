@@ -17,4 +17,5 @@ class UserModel extends BaseModel
         $this->setQuery($sql);
         return $this->execute([$id] );
     }
+    
 }

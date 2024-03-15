@@ -1,18 +1,13 @@
 {
-    "name": "hoang/doc_apointment",
+    "name": "admin/doc_apointment",
     "autoload": {
         "psr-4": {
             "App\\": "app/"
         }
     },
-    "authors": [
-        {
-            "name": "hoangduylap",
-            "email": "hoangduylap124@gmail.com"
-        }
-    ],
     "require": {
-        "phroute/phroute": "^2.2",
-        "eftec/bladeone": "^4.12"
+        "illuminate/events": "^10.47",
+        "eftec/bladeone": "^4.12",
+        "phroute/phroute": "^2.2"
     }
 }
