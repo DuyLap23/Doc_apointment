@@ -740,3 +740,6 @@ body {
 .desc{
 	max-width: 400px;
 }
+.td-w{
+	width: 50px;
+}

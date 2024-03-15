@@ -107,9 +107,10 @@
 			</ul>
 		</nav>
         @yield('content')
-		<script src="../../../../public/js/script.js"></script>
-<script src="../../../../public/js/sticky_sidebar.min.js"></script>
-<script src="../../../../public/js/specific_listing.js"></script>
+		<script src="../public/js/script.js"></script>
+<script src="../public/js/sticky_sidebar.min.js"></script>
+<script src="../public/js/specific_listing.js"></script>
+<script src="../public/js/account.js"></script>
 
 
 </body>
