@@ -1,4 +1,5 @@
 <?php
+
 use Phroute\Phroute\RouteCollector;
 
 $url = !isset($_GET['url']) ? "/" : $_GET['url'];

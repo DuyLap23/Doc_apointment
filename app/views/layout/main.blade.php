@@ -12,6 +12,7 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="path/to/boxicons.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	
 	<!-- My CSS -->
 	@include('layout.style')
 

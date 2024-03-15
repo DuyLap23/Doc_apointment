@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controllers;
 
 
@@ -9,11 +10,11 @@ use App\Models\LoginModel;
 class UserController extends BaseController
 {
     protected $user;
-    protected $login;
+    protected $logins;
     public function __construct()
     {
         $this->user = new UserModel();
-        $this->login = new LoginModel();
+        $this->logins = new LoginModel();
     }
     public function userSelect()
     {
@@ -40,12 +41,11 @@ class UserController extends BaseController
         $gender = $_POST['gender'];
         $image = $_FILES['image']['name'];
         $tmp_name = $_FILES['image']['tmp_name'];
-       move_uploaded_file($tmp_name, "images/" . $image);
+        move_uploaded_file($tmp_name, "images/" . $image);
 
         $result = $this->user->InsertUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phoneNumber);
         if ($result) {
             redirect('success', 'Đăng ký thành công', 'admin/user/list');
-
         } else {
             redirect('error', 'Đăng ký thất bại', 'admin/user/store');
         }
@@ -55,55 +55,68 @@ class UserController extends BaseController
 
     public function UserDel($id)
     {
-        $del =$this->user->DeleteUser($id);
+        $del = $this->user->DeleteUser($id);
         if ($del) {
             redirect('success', 'Xoa thanh cong', 'admin/user/list');
         }
     }
-public function testlogin(){
-    return $this ->render('account.login');
-}
-public function login(){
-    $email = $_POST['emailLogin'];
-    $password = md5($_POST['passwordLogin']);
-    $role = $this->login->checkuser($email, $password);
+    public function testlogin()
+    {
+        return $this->render('account.login');
+    }
+    public function login()
+    {
+        if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
+            $email = htmlspecialchars($_POST['emailLogin']);
+            $password = $_POST['passwordLogin'];
 
-    if($role){
-        // Lưu thông tin người dùng vào session
-        $_SESSION['email'] = $role['email'];
-        $_SESSION['roleld'] = $role['roleld'];
-        $_SESSION['id'] = $role['id'];
-        $_SESSION['lastName'] = $role['lastName'];
+            // Kiểm tra user từ cơ sở dữ liệu
+            $user = $this->logins->checkuser($email, $password);
 
-        // Chuyển hướng người dùng đến trang tương ứng
-        if ($_SESSION['roleld'] == "user") {
-            redirect('success', 'Đăng nhập thành công', 'admin/home');
+            if ($user) {
+                // Lưu thông tin người dùng vào session
+                // $_SESSION['email'] = $user['email'];
+                // $_SESSION['roleld'] = $user['roleld'];
+                // $_SESSION['id'] = $user['id'];
+                // $_SESSION['lastName'] = $user['lastName'];
+                $_SESSION['email'] = $user->email;
+                $_SESSION['roleld'] = $user->roleld;
+                $_SESSION['id'] = $user->id;
+                $_SESSION['lastName'] = $user->lastName;
+
+
+                // Chuyển hướng người dùng đến trang tương ứng
+                if ($_SESSION['roleld'] == "user") {
+                    redirect('success', 'Đăng nhập thành công', '/');
+                } else {
+                    redirect('success', 'Đăng nhập thành công', 'admin/user/list');
+                }
+            } else {
+                // Nếu thông tin đăng nhập không hợp lệ, thông báo lỗi
+                $err = "Email hoặc mật khẩu không đúng!";
+                // Truyền thông báo lỗi vào view
+                return $this->render('account.login', compact('err'));
+            }
         } else {
-            redirect('success', 'Đăng nhập thành công', 'admin/home');
+            // Xử lý khi dữ liệu không hợp lệ
+            $err = "Dữ liệu đầu vào không hợp lệ!";
+            return $this->render('account.login', compact('err'));
         }
-    } else {
-        // Nếu thông tin đăng nhập không hợp lệ, thông báo lỗi
-        $err = "Email hoặc mật khẩu không đúng!";
-        // Truyền thông báo lỗi vào view
-        return $this->render('account.login', compact('err'));
-    }
-}
-
-    public function registers (){
-       $email = $_POST['email'];
-       $password = md5($_POST['password']);
-       $lastName = $_POST['lastName'];
-       $address = $_POST['address'];
-       $phoneNumber = $_POST['phonenumber'];
-       $result = $this->login->register($email, $password, $lastName, $address, $phoneNumber);
-       if ($result) {
-           redirect('success', 'Đăng ký thành công', 'admin/home/home');
-
-       } else {
-           redirect('error', 'Đăng ký thất bại', 'admin/home/home');
-       }
-
-
     }
 
+
+    public function registers()
+    {
+        $email = $_POST['email'];
+        $password = md5($_POST['password']);
+        $lastName = $_POST['lastName'];
+        $address = $_POST['address'];
+        $phoneNumber = $_POST['phonenumber'];
+        $result = $this->logins->register($email, $password, $lastName, $address, $phoneNumber);
+        if ($result) {
+            redirect('success', 'Đăng ký thành công', 'admin/home/home');
+        } else {
+            redirect('error', 'Đăng ký thất bại', 'admin/home/home');
+        }
+    }
 }
