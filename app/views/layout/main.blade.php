@@ -12,7 +12,10 @@
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<link rel="stylesheet" href="path/to/boxicons.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	
+	<script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
 	<!-- My CSS -->
 	@include('layout.style')
 
@@ -110,7 +113,7 @@
 		<script src="../public/js/script.js"></script>
 <script src="../public/js/sticky_sidebar.min.js"></script>
 <script src="../public/js/specific_listing.js"></script>
-<script src="../public/js/account.js"></script>
+
 
 
 </body>
