@@ -26,68 +26,45 @@
                     <button><a href="{{ route('admin/user/store') }}">Tạo Tài Khoản</a></button>
                 </div>
             </div>
-            <table>
-                <thead>
-                    <tr class="row">
-                        <th class="col-1 ">Mã Tài Khoản</th>
-                        <th class="col-3">Email</th>
-                        <th class="col-1">Tên Tài Khoản</th>
-                        <th class="col-1">Ảnh</th>
-                        <th class="col-1">Địa Chỉ</th>
-                        <th class="col-1">Giới Tính</th>
-                        <th class="col-1">Số Điện Thoại</th>
-                        <th class="col-1">Vai Trò</th>
-                        <th class="col-1">Chức Vụ</th>
-                        <th class="col-1">Xóa</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    @foreach($userSelect as $usList)
-                    
-                        <tr class="tr-shadow row ">
-                            <td class="col-1">
-                               <p> {{ $usList->id }}</p>
-                            </td>
-                            <td class="col-3  " >
-                               <p class="">  {{ $usList->email }} </p>
-                            </td>
-                            <td class="col-1">
-                                {{ $usList->firstName
-                                    .' ' . $usList->lastName}}
-                            </td >
-                          
-                            <td class="col-1">
-                                <img src="../../images/{{ $usList->image }}" alt="" width="100px" height="100px" class="rounded-circle">
-                            </td>
-                            <td class="col-1">
-                                {{ $usList->address }}
-                            </td>
-                            <td class="col-1">
-                          @if($usList->gender == 0)Nam 
-                          @else Nữ
-                           @endif 
-                          
-                               
-                            </td>
-                            <td class="col-1">
-                                {{ $usList->phonenumber }}
-                            </td>
-                            <td class="col-1">
-                                {{ $usList->roleId }}
-                            </td>
-                            <td class="col-1">
-                                {{ $usList->positionId }}
-                            </td>
-                            <td class="col-1">
-                                <a onclick="return confirm('Bạn có chắc chắn muốn xóa Tài Khoản này không?')"
-                                    href="{{ route('admin/user/del/'. $usList->id)}}"><button
-                                        class="btn status pending">xóa</button></a>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+            <div class="container mt-5">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#waiting" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+                Chờ xác nhận 
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#shipping" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+                Đang vận chuyển
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#completed" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+                Đã hoàn thành
+              </button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#cancel" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false">
+                Đơn bị huỷ
+              </button>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="waiting" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                Chờ xác nhận
+            </div>
+            <div class="tab-pane fade" id="shipping" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                Đang vận chuyển
+            </div>
+            <div class="tab-pane fade" id="completed" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+                Đã hoàn thành
+            </div>
+            <div class="tab-pane fade" id="cancel" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">
+                Đã huỷ
+            </div>
+        </div>
+    </div>
 
         </div>
 
