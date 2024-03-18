@@ -13,6 +13,7 @@
 	<link rel="stylesheet" href="path/to/boxicons.min.css">
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	
+	
 	<!-- My CSS -->
 	<?php echo $this->runChild('layout.style'); ?>
 
@@ -107,7 +108,7 @@
  </ul>
  </nav>
  <?php echo $this->yieldContent('content'); ?>
- <script src="../public/js/script.js"></script>
+ <script src="../public/js/script.js"></>
 <script src="../public/js/sticky_sidebar.min.js"></script>
 <script src="../public/js/specific_listing.js"></script>
 <script src="../public/js/account.js"></script>

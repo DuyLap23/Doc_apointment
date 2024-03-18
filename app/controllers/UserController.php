@@ -75,10 +75,7 @@ class UserController extends BaseController
 
             if ($user) {
                 // Lưu thông tin người dùng vào session
-                // $_SESSION['email'] = $user['email'];
-                // $_SESSION['roleld'] = $user['roleld'];
-                // $_SESSION['id'] = $user['id'];
-                // $_SESSION['lastName'] = $user['lastName'];
+                $_SESSION['auth'] = true;
                 $_SESSION['email'] = $user->email;
                 $_SESSION['roleId'] = $user->roleId;
                 $_SESSION['id'] = $user->id;
@@ -120,5 +117,8 @@ class UserController extends BaseController
         } else {
             redirect('error', 'Đăng ký thất bại', 'admin/home/home');
         }
+    }
+    public function login1(){
+        return $this->render('account.login1');
     }
 }
