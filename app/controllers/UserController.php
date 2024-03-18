@@ -86,9 +86,9 @@ class UserController extends BaseController
                 if ($_SESSION['roleId'] == "admin") {
                     redirect('success', 'Đăng nhập thành công', '/');
                 } else if($_SESSION['roleId'] == "doctor") {
-                    redirect('success', 'Đăng nhập thành công', 'admin/user/list');
+                    redirect('success', 'Đăng nhập thành công', 'admin/user/store');
                 }else{
-                    redirect('success', 'Đăng nhập này', 'admin/user/store');
+                    redirect('success', 'Đăng nhập này', 'admin/user/list');
                 }
             } else {
                 // Nếu thông tin đăng nhập không hợp lệ, thông báo lỗi

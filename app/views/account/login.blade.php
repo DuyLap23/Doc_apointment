@@ -1,134 +1,122 @@
-@extends('layout.main')
+@extends('layout.mainlogin')
 @section('content')
-<main class="bg_gray">
-	<div class="container margin_30">
-		<div class="page_header">
-			<div class="breadcrumbs">
-				<ul>
-					<li><a href=""></a>Đăng Nhập</a></li>
-
-				</ul>
-			</div>
-			<h1>Đăng nhập hoặc tạo tài khoản </h1>
-		</div>
-		<!-- /page_header -->
-		<div class="row justify-content-center">
-			<div class="col-xl-6 col-lg-6 col-md-8">
-				<div class="box_account">
-					<h3 class="client">Đã có tài khoản </h3>
-					<div class="form_container">
-						<div class="divider"></div>
-						<form action="{{ route('account/dangnhap') }}" onsubmit="return sendDangnhap()" method="post">
-							<div class="form-group">
-								<input type="email" 
+  <body>
+    <div class="container">
+      <div class="forms-container">
+        <div class="signin-signup">
+          <form action="{{ route('account/dangnhap') }}" onsubmit="return sendDangnhap()" method="post" class="sign-in-form">
+            <h2 class="title">Đăng nhập</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="email" 
 									class="form-control emailLogin" name="emailLogin" id="email" placeholder="Email*">
-							</div>
-							<div class="err__login">
-								<div class="email__errLogin"></div>
-							</div>
-							<div class="form-group">
-								<input type="password" "
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" "
 									class="form-control passwordLogin" name="passwordLogin" id="password_in" value=""
 									placeholder="Password*">
-							</div>
-							<div class="err__login">
-								<div class="pass__errLogin"></div>
-							</div>
-							<div class="err__login">
+            </div>
+            <div class="err__login">
 								<span>
 									<?= isset($err) ? $err : "" ?>
 								</span>
 							</div>
-							<div class="clearfix add_bottom_15">
+              <div class="clearfix add_bottom_15">
 								
 								<div class="float-end"><a id="forgot" href="javascript:void(0);">Lost Password?</a>
 								</div>
 							</div>
-							<div class="text-center"><input type="submit" name="login" value="Đăng nhập "
-									class="btn_1 full-width"></div>
-							<div id="forgot_pw">
-								<div class="form-group">
-									<input type="email" class="form-control" name="email_forgot" id="email_forgot"
-										placeholder="Type your email">
-								</div>
-								<p>A new password will be sent shortly.</p>
-								<div class="text-center"><input type="submit" value="Reset Password" class="btn_1">
-								</div>
-							</div>
-						</form>
-					</div>
-					<!-- /form_container -->
-				</div>
-				<!-- /box_account -->
-				
-			</div>
-			<div class="col-xl-6 col-lg-6 col-md-8">
-				<div class="box_account">
-					<h3 class="new_client">Người dùng mới </h3> <small class="float-right pt-2">* Phần bắt buộc</small>
-					<form action="{{ route('account/register') }}" onsubmit="return sendDangky()" method="post">
-						<div class="form_container">
-							<div class="form-group">
-								<input type="email" class="form-control email" name="email" id="email_2"
-									placeholder="Email *">
-							</div>
-							<div class="err__login">
-								<div class="email__err"></div>
-							</div>
-							<div class="form-group">
-								<input type="password" class="form-control password" name="password" id="password_in_2"
-									value="" placeholder="Mật khẩu *">
-							</div>
-							<div class="err__login">
-								<div class="pass__err"></div>
-							</div>
-							<div class="private box">
-								<div class="row no-gutters">
-									<div class="col-6 pr-1">
-										<div class="form-group">
-											<input type="text" class="form-control name" name="lastName"
+
+            <div class="text-center"><input type="submit" name="login" value="Đăng nhập "
+									class="btn_1 full-width btn solid"></div>
+            <p class="social-text">Đăng nhập bằng nền tảng xã hội</p>
+            <div class="social-media">
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </form>
+
+
+          <form action="{{ route('account/register') }}" onsubmit="return sendDangky()" method="post" class="sign-up-form">
+            <h2 class="title">Đăng kí</h2>
+            <div class="input-field">
+              <i class="fas fa-user"></i>
+              <input type="text" class="form-control name" name="lastName"
 												placeholder="Tên *">
-										</div>
-										<div class="err__login">
-											<div class="name__err"></div>
-										</div>
-									</div>
-									<div class="col-6 pl-1">
-										<div class="form-group">
-											<input type="number" class="form-control phone" name="phonenumber"
+            </div>
+            <div class="input-field">
+              <i class="fas fa-envelope"></i>
+              <input type="email" class="form-control email" name="email" id="email_2"
+									placeholder="Email *">
+            </div>
+            <div class="input-field">
+              <i class="fas fa-lock"></i>
+              <input type="password" class="form-control password" name="password" id="password_in_2"
+									value="" placeholder="Mật khẩu *">
+              
+            </div>
+            <div class="input-field">
+              <i class="fas fa-phone"></i>
+              <input type="number" class="form-control phone" name="phonenumber"
 												placeholder="Số điện thoại *">
-										</div>
-										<div class="err__login">
-											<div class="phone__err"></div>
-										</div>
-									</div>
-									<div class="col-12">
-										<div class="form-group">
-											<input type="text" class="form-control address" name="address"
-												placeholder="Địa chỉ *">
-										</div>
-										<div class="err__login">
-											<div class="address__err"></div>
-										</div>
-									</div>
-								</div>
-								<!-- /row -->
+            </div>
+            <div class="input-field">
+              <i class="fas fa-map"></i>
+              <input type="text" class="form-control address" name="address" placeholder="Địa chi">
+            </div>
 
+            <div class="text-center"><input type="submit" value="Đăng kí " name="signup"
+									class="btn_1 full-width btn solid"></div>
+           
 
-							</div>
-							<!-- /private -->
-							<!-- /company -->
-							
-							<div class="text-center"><input type="submit" value="Đăng kí " name="signup"
-									class="btn_1 full-width"></div>
-						</div>
-					</form>
-					<!-- /form_container -->
-				</div>
-				<!-- /box_account -->
-			</div>
-		</div>
-		<!-- /row -->
-	</div>
-	<!-- /container -->
-</main>
-@endsection
+            <p class="social-text">Đăng nhập bằng nền tảng xã hội</p>
+            <div class="social-media">
+              <a href="#" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-google"></i>
+              </a>
+              <a href="#" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="panels-container">
+
+        <div class="panel left-panel">
+            <div class="content">
+                <h1>Tại đây</h1>
+                <p>Sự chăm sóc không chỉ là điều trị bệnh, mà còn là nghệ thuật chăm sóc và chia sẻ.</p>
+                <button class="btn transparent" id="sign-up-btn">Đăng kí</button>
+            </div>
+            <img src="./img/log.svg" class="image" alt="">
+        </div>
+
+        <div class="panel right-panel">
+            <div class="content">
+                <h1>Y là nghề cao quý</h1>
+                <p>Không có gì quý hơn việc có thể giúp đỡ và chữa lành những người đang gặp khó khăn về sức khỏe.</p>
+                <button class="btn transparent" id="sign-in-btn">Đăng nhập</button>
+            </div>
+            <img src="./img/register.svg" class="image" alt="">
+        </div>
+      </div>
+  
+  @endsection
