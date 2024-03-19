@@ -9,7 +9,8 @@
       src="https://kit.fontawesome.com/64d58efce2.js"
       crossorigin="anonymous"
     ></script>
-    @include('layout.stylelogin')
+    <link rel="stylesheet" type="text/css" href="{{ BASE_URL . './public/css/login.css' }}">
+<link rel="stylesheet" href="{{ BASE_URL . '../public/css/account.css' }}">
   </head>
   <body>
   @yield('content')

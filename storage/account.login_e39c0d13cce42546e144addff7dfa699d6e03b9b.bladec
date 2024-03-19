@@ -121,4 +121,4 @@
  
  <?php $this->stopSection(); ?>
 
-<?php if (isset($_shouldextend[1])) { echo $this->runChild('layout.mainlogin'); } ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layout.mainLogin'); } ?>

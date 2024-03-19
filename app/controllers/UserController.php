@@ -11,17 +11,35 @@ class UserController extends BaseController
 {
     protected $user;
     protected $logins;
+    protected $role;
     public function __construct()
     {
         $this->user = new UserModel();
         $this->logins = new LoginModel();
+
     }
     public function userSelect()
     {
+        // Lấy danh sách các vai trò từ phương thức SelectRole()
+        $roles = $this->user->SelectRole();
+        // Khởi tạo mảng chứa dữ liệu người dùng cho mỗi vai trò
+        $userSelects = array();
 
-        $userSelect = $this->user->SelectUser();
-        return $this->render('admin.user.list', compact('userSelect'));
+        // Duyệt qua từng vai trò và lấy danh sách người dùng tương ứng từ phương thức SelectUser()
+        foreach ($roles as $role) {
+            // Lấy danh sách người dùng có roleId tương ứng từ phương thức SelectUser()
+            $users = $this->user->SelectUser($role->roleId); // Sử dụng -> thay vì ['roleId']
+
+            // Kiểm tra xem có dữ liệu trả về không
+            if (!empty ($users)) {
+                // Lưu danh sách người dùng vào mảng userSelects theo roleId
+                $userSelects[$role->roleId] = $users;
+            }
+        }
+
+        return $this->render('admin.user.list', compact('userSelects'));
     }
+
     public function index()
     {
         return $this->render('admin.index');
@@ -66,7 +84,7 @@ class UserController extends BaseController
     }
     public function login()
     {
-        if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
+        if (isset ($_POST['emailLogin']) && isset ($_POST['passwordLogin'])) {
             $email = htmlspecialchars($_POST['emailLogin']);
             $password = $_POST['passwordLogin'];
 
@@ -83,11 +101,11 @@ class UserController extends BaseController
 
 
                 // Chuyển hướng người dùng đến trang tương ứng
-                if ($_SESSION['roleId'] == "admin") {
+                if ($_SESSION['roleId'] == "3") {
                     redirect('success', 'Đăng nhập thành công', '/');
-                } else if($_SESSION['roleId'] == "doctor") {
+                } else if ($_SESSION['roleId'] == "2") {
                     redirect('success', 'Đăng nhập thành công', 'admin/user/store');
-                }else{
+                } else if ($_SESSION['roleId'] == "1") {
                     redirect('success', 'Đăng nhập này', 'admin/user/list');
                 }
             } else {
@@ -118,7 +136,8 @@ class UserController extends BaseController
             redirect('error', 'Đăng ký thất bại', 'admin/home/home');
         }
     }
-    public function login1(){
+    public function login1()
+    {
         return $this->render('account.login1');
     }
 }
