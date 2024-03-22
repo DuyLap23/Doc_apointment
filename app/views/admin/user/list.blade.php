@@ -52,52 +52,51 @@
                             <table>
                                 <thead>
                                     <tr class="row">
-                                        <th class="col-1 ">Mã Tài Khoản</th>
-                                        <th class="col-3">Email</th>
-                                        <th class="col-1">Tên Tài Khoản</th>
-                                        <th class="col-1">Ảnh</th>
-                                        <th class="col-1">Địa Chỉ</th>
-                                        <th class="col-1">Giới Tính</th>
-                                        <th class="col-1">Số Điện Thoại</th>
-                                        <th class="col-1">Vai Trò</th>
-                                        <th class="col-1">Chức Vụ</th>
-                                        <th class="col-1">Sửa</th>
+                                        <th class="col ">Mã Tài Khoản</th>
+                                        <th class="col-2">Email</th>
+                                        <th class="col">Tên Tài Khoản</th>
+                                        <th class="col">Ảnh</th>
+                                        <th class="col-2">Địa Chỉ</th>
+                                        <th class="col">Giới Tính</th>
+                                        <th class="col-2">Số Điện Thoại</th>
+                                        <th class="col">Vai Trò</th>
+                                        <th class="col">Sửa</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (isset($userSelects['3']))
                                         @foreach ($userSelects['3'] as $users)
                                             <tr class="tr-shadow row ">
-                                                <td class="col-1 mt-2 ">
+                                                <td class="col mb-5">
                                                     <p> {{ $users->id }}</p>
                                                 </td>
-                                                <td class="col-3 mt-2  ">
-                                                    <p class=""> {{ $users->email }} </p>
+                                                <td class="col-2 ">
+                                                    {{ $users->email }} 
                                                 </td>
-                                                <td class="col-1 mt-2">
+                                                <td class="col ">
                                                     {{ $users->firstName . ' ' . $users->lastName }}
                                                 </td>
 
-                                                <td class="col-1 mb-4">
+                                                <td class="col ">
                                                     <img src="../../images/{{ $users->image }}" alt=""
-                                                        width="100px" height="100px" class="rounded-circle">
+                                                        width="100px" height="100px" class="rounded-4">
                                                 </td>
-                                                <td class="col-1 mt-2">
+                                                <td class="col-2">
                                                     {{ $users->address }}
                                                 </td>
-                                                <td class="col-1 mt-2">
+                                                <td class="col ">
                                                     {{ $users->gender_value }}
                                                 </td>
-                                                <td class="col-1 mt-2">
+                                                <td class="col-2" >
                                                     {{ $users->phonenumber }}
                                                 </td>
-                                                <td class="col-1 mt-2">
+                                                <td class="col ">
                                                     {{ $users->role_value }}
                                                 </td>
-                                                <td class="col-1 mt-2">
+                                                <!-- <td class="col ">
                                                     {{ $users->position_value }}
-                                                </td>
-                                                <td class="col-1 mt-2">
+                                                </td> -->
+                                                <td class="col ">
                                                     <a 
                                                         href="{{ route('admin/user/del/' . $users->id) }}"><button
                                                             class="btn status completed">sửa</button></a>
@@ -118,51 +117,51 @@
                 <div class="tab-pane fade" id="doctor" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                     <div class="table-data">
                         <div class="order">
-                            <table>
+                            <table class=" table-striped ">
                                 <thead>
                                     <tr class="row">
-                                        <th class="col-1 ">Mã Tài Khoản</th>
+                                        <th class="col ">Mã Tài Khoản</th>
                                         <th class="col-3">Email</th>
-                                        <th class="col-1">Tên Tài Khoản</th>
-                                        <th class="col-1">Ảnh</th>
+                                        <th class="col">Tên Tài Khoản</th>
+                                        <th class="col">Ảnh</th>
                                         <th class="col-2 ">Địa Chỉ</th>
-                                        <th class="col-1">Giới Tính</th>
-                                        <th class="col-1">Số Điện Thoại</th>
-                                        <th class="col-1">Vai Trò</th>
-                                        <th class="col-1">Thao tác</th>
+                                        <th class="col">Giới Tính</th>
+                                        <th class="col">Số Điện Thoại</th>
+                                        <th class="col">Chức vụ</th>
+                                        <th class="col">Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (isset($userSelects['2']))
                                         @foreach ($userSelects['2'] as $users)
                                             <tr class="tr-shadow row ">
-                                                <td class="col-1 mt-2">
-                                                    <p> {{ $users->id }}</p>
+                                                <td class="col  mb-5">
+                                                    <p class=""> {{ $users->id }}</p>
                                                 </td>
-                                                <td class="col-3 mt-2  ">
+                                                <td class="col-3 ">
                                                     <p class=""> {{ $users->email }} </p>
                                                 </td>
-                                                <td class="col-1 mt-2">
+                                                <td class="col ">
                                                     {{ $users->firstName . ' ' . $users->lastName }}
                                                 </td>
 
-                                                <td class="col-1 mb-4">
+                                                <td class="col ">
                                                     <img src="../../images/{{ $users->image }}" alt=""
-                                                        width="100px" height="100px" class="rounded-circle">
+                                                        width="100px" height="100px" class="rounded-4">
                                                 </td>
-                                                <td class="col-2 mt-2">
+                                                <td class="col-2 ">
                                                     {{ $users->address }}
                                                 </td>
-                                                <td class="col-1 mt-2">
+                                                <td class="col ">
                                                     {{ $users->gender_value }}
                                                 </td>
-                                                <td class="col-1 mt-2">
+                                                <td class="col  ">
                                                     {{ $users->phonenumber }}
                                                 </td>
-                                                <td class="col-1 mt-2">
-                                                    {{ $users->role_value }}
+                                                <td class="col ">
+                                                    {{ $users->position_value }}
                                                 </td>
-                                                <td class="col-1 mt-2 d-flex">
+                                                <td class="col ">
                                                     <a
                                                         href="{{ route('admin/user/edit/' . $users->id) }}"><button
                                                             class="btn status completed">Sửa</button></a>
@@ -187,48 +186,48 @@
                             <table>
                                 <thead>
                                     <tr class="row">
-                                        <th class="col-1 ">Mã Tài Khoản</th>
+                                        <th class="col ">Mã Tài Khoản</th>
                                         <th class="col-3">Email</th>
-                                        <th class="col-1">Tên Tài Khoản</th>
-                                        <th class="col-1">Ảnh</th>
+                                        <th class="col-2">Tên Tài Khoản</th>
+                                        <th class="col">Ảnh</th>
                                         <th class="col-2 ">Địa Chỉ</th>
-                                        <th class="col-1">Giới Tính</th>
-                                        <th class="col-1">Số Điện Thoại</th>
-                                        <th class="col-1">Vai Trò</th>
-                                        <th class="col-1">Xóa</th>
+                                        <th class="col">Giới Tính</th>
+                                        <th class="col">Số Điện Thoại</th>
+                                        <!-- <th class="col">Vai Trò</th> -->
+                                        <th class="col">Xóa</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (isset($userSelects['1']))
                                         @foreach ($userSelects['1'] as $users)
                                             <tr class="tr-shadow row ">
-                                                <td class="col-1 mt-2">
+                                                <td class="col mb-5">
                                                     <p> {{ $users->id }}</p>
                                                 </td>
-                                                <td class="col-3 mt-2  ">
+                                                <td class="col-3  ">
                                                     <p class=""> {{ $users->email }} </p>
                                                 </td>
-                                                <td class="col-1 mt-2">
+                                                <td class="col-2 ">
                                                     {{ $users->firstName . ' ' . $users->lastName }}
                                                 </td>
 
-                                                <td class="col-1 mb-4">
+                                                <td class="col ">
                                                     <img src="../../images/{{ $users->image }}" alt=""
-                                                        width="100px" height="100px" class="rounded-circle">
+                                                        width="100px" height="100px" class="rounded-4">
                                                 </td>
-                                                <td class="col-2 mt-2">
+                                                <td class="col-2 ">
                                                     {{ $users->address }}
                                                 </td>
-                                                <td class="col-1 mt-2">
+                                                <td class="col ">
                                                     {{ $users->gender_value }}
                                                 </td>
-                                                <td class="col-1 mt-2">
+                                                <td class="col ">
                                                     {{ $users->phonenumber }}
                                                 </td>
-                                                <td class="col-1 mt-2">
+                                                <!-- <td class="col ">
                                                     {{ $users->role_value }}
-                                                </td>
-                                                <td class="col-1 mt-2">
+                                                </td> -->
+                                                <td class="col ">
                                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa Tài Khoản này không?')"
                                                         href="{{ route('admin/user/del/' . $users->id) }}"><button
                                                             class="btn status pending">xóa</button></a>
