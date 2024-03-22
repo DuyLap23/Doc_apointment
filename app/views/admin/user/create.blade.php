@@ -75,8 +75,10 @@
                                 placeholder="Nhập số điện thoại" class="input w-75 rounded-2"><br />
 
                             <select name="gender" id="" class="form-control mt-2 rounded-3 w-75">
-                                <option value="0">Nam</option>
-                                <option value="1">Nữ</option>
+                                @foreach ($genderIds as $key => $gender)
+                              
+                                    <option value="{{ $gender->id_codetype }}">{{ $gender->value }}</option>
+                                @endforeach
                             </select> <br>
                         </div>
 

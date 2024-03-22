@@ -19,6 +19,7 @@
         <!-- table -->
 
         <div class="container mt-5">
+            <a href="{{ route('admin/user/store') }}"><input type="button" value="Tạo Tài Khoản"></a>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#admin"
@@ -67,36 +68,36 @@
                                     @if (isset($userSelects['3']))
                                         @foreach ($userSelects['3'] as $users)
                                             <tr class="tr-shadow row ">
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2 ">
                                                     <p> {{ $users->id }}</p>
                                                 </td>
-                                                <td class="col-3  ">
+                                                <td class="col-3 mt-2  ">
                                                     <p class=""> {{ $users->email }} </p>
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     {{ $users->firstName . ' ' . $users->lastName }}
                                                 </td>
 
-                                                <td class="col-1">
+                                                <td class="col-1 mb-4">
                                                     <img src="../../images/{{ $users->image }}" alt=""
                                                         width="100px" height="100px" class="rounded-circle">
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     {{ $users->address }}
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     {{ $users->gender_value }}
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     {{ $users->phonenumber }}
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     {{ $users->role_value }}
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     {{ $users->position_value }}
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     <a 
                                                         href="{{ route('admin/user/del/' . $users->id) }}"><button
                                                             class="btn status completed">sửa</button></a>
@@ -135,33 +136,33 @@
                                     @if (isset($userSelects['2']))
                                         @foreach ($userSelects['2'] as $users)
                                             <tr class="tr-shadow row ">
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     <p> {{ $users->id }}</p>
                                                 </td>
-                                                <td class="col-3  ">
+                                                <td class="col-3 mt-2  ">
                                                     <p class=""> {{ $users->email }} </p>
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     {{ $users->firstName . ' ' . $users->lastName }}
                                                 </td>
 
-                                                <td class="col-1">
+                                                <td class="col-1 mb-4">
                                                     <img src="../../images/{{ $users->image }}" alt=""
                                                         width="100px" height="100px" class="rounded-circle">
                                                 </td>
-                                                <td class="col-2">
+                                                <td class="col-2 mt-2">
                                                     {{ $users->address }}
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     {{ $users->gender_value }}
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     {{ $users->phonenumber }}
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     {{ $users->role_value }}
                                                 </td>
-                                                <td class="col-1 d-flex">
+                                                <td class="col-1 mt-2 d-flex">
                                                     <a
                                                         href="{{ route('admin/user/edit/' . $users->id) }}"><button
                                                             class="btn status completed">Sửa</button></a>
@@ -201,33 +202,33 @@
                                     @if (isset($userSelects['1']))
                                         @foreach ($userSelects['1'] as $users)
                                             <tr class="tr-shadow row ">
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     <p> {{ $users->id }}</p>
                                                 </td>
-                                                <td class="col-3  ">
+                                                <td class="col-3 mt-2  ">
                                                     <p class=""> {{ $users->email }} </p>
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     {{ $users->firstName . ' ' . $users->lastName }}
                                                 </td>
 
-                                                <td class="col-1">
+                                                <td class="col-1 mb-4">
                                                     <img src="../../images/{{ $users->image }}" alt=""
                                                         width="100px" height="100px" class="rounded-circle">
                                                 </td>
-                                                <td class="col-2">
+                                                <td class="col-2 mt-2">
                                                     {{ $users->address }}
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     {{ $users->gender_value }}
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     {{ $users->phonenumber }}
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     {{ $users->role_value }}
                                                 </td>
-                                                <td class="col-1">
+                                                <td class="col-1 mt-2">
                                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa Tài Khoản này không?')"
                                                         href="{{ route('admin/user/del/' . $users->id) }}"><button
                                                             class="btn status pending">xóa</button></a>

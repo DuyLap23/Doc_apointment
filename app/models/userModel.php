@@ -5,21 +5,30 @@ class UserModel extends BaseModel
 {
     protected $table = 'users';
 
-    public function SelectUser($role)
+
+
+    public function SelectUser($role = null)
     {
         $sql = "SELECT $this->table.*,
-            gender_codetype.value AS gender_value,
-            role_codetype.value AS role_value,
-            position_codetype.value AS position_value
-            FROM $this->table
-            JOIN codetype AS gender_codetype ON $this->table.gender = gender_codetype.id_codetype
-            JOIN codetype AS role_codetype ON $this->table.roleId = role_codetype.id_codetype
-            JOIN codetype AS position_codetype ON $this->table.positionId = position_codetype.id_codetype
-            WHERE $this->table.roleId = ?";
-
+                gender_codetype.value AS gender_value,
+                role_codetype.value AS role_value,
+                position_codetype.value AS position_value
+                FROM $this->table
+                JOIN codetype AS gender_codetype ON $this->table.gender = gender_codetype.id_codetype
+                JOIN codetype AS role_codetype ON $this->table.roleId = role_codetype.id_codetype
+                JOIN codetype AS position_codetype ON $this->table.positionId = position_codetype.id_codetype";
+    
+        if ($role !== null) {
+            $sql .= " WHERE $this->table.roleId = ?";
+            $params = [$role];
+        } else {
+            $params = [];
+        }
+    
         $this->setQuery($sql);
-        return $this->loadAllRows([$role]); // Truyền giá trị tham số ràng buộc vào dưới dạng mảng
+        return $this->loadAllRows($params); // Truyền giá trị tham số ràng buộc vào dưới dạng mảng
     }
+    
 
     public function SelectRole()
     {
@@ -27,12 +36,17 @@ class UserModel extends BaseModel
         $this->setQuery($sql);
         return $this->loadAllRows(); // Lấy tất cả các vai trò
     }
-
-    public function InsertUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber)
-    {
-        $sql = "INSERT INTO $this->table SET email = ?, password = ?, firstName = ?, lastName = ?, image = ?, address = ?, gender = ?, phonenumber = ?";
+    public function SelectUserByType($type){
+        $sql ="SELECT * FROM codetype WHERE type = ?";
         $this->setQuery($sql);
-        return $this->execute([$email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber]);
+        return $this->loadAllRows([$type]);
+    }
+
+    public function InsertUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber, $roleId, $positionId)
+    {
+        $sql = "INSERT INTO $this->table SET email = ?, password = ?, firstName = ?, lastName = ?, image = ?, address = ?, gender = ?, phonenumber = ? , roleId = ?, positionId = ?";
+        $this->setQuery($sql);
+        return $this->execute([$email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber , $roleId, $positionId]);
     }
 
     public function UpdateUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber, $id)
