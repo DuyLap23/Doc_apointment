@@ -33,7 +33,6 @@ class UserController extends BaseController
                 $userSelects[$role->roleId] = $users;
             }
         }
-
         return $this->render('admin.user.list', compact('userSelects'));
     }
 
