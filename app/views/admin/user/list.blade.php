@@ -34,9 +34,9 @@
             <a href="{{ route('admin/user/store') }}"><input type="button" value="Tạo Tài Khoản"></a>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#admin"
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#patient"
                         type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
-                        Admin
+                       Bệnh Nhân
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
@@ -46,9 +46,9 @@
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#patient" type="button"
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#admin" type="button"
                         role="tab" aria-controls="profile-tab-pane" aria-selected="false">
-                        Bệnh Nhân
+                       Admin
                     </button>
                 </li>
 
@@ -56,7 +56,7 @@
 
             <div class="tab-content" id="myTabContent">
                 <!-- admin  -->
-                <div class="tab-pane fade show active" id="admin" role="tabpanel" aria-labelledby="home-tab"
+                <div class="tab-pane fade  " id="admin" role="tabpanel" aria-labelledby="home-tab"
                     tabindex="0">
                     <!-- table  -->
                     <div class="table-data">
@@ -190,7 +190,7 @@
                 <!-- end doctor -->
 
                 <!-- patient -->
-                <div class="tab-pane fade" id="patient" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                <div class="tab-pane fade show active" id="patient" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                     <div class="table-data">
                         <div class="order">
                             <table>

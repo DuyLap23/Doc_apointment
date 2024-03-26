@@ -20,7 +20,7 @@
  <div class="table-data">
  <div class="order">
  <div class="head">
- <h3>Chuyên môn</h3>
+ <h3>Danh sách</h3>
  </div>
  <div>
  <?php if(isset($_SESSION['error'])): ?>
