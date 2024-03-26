@@ -28,19 +28,20 @@
                 <h3>Chuyên môn</h3>
 
             </div>
+            {{print_r($specialty)}}
             <form action="{{ route('admin/specialty/update') }}" class="form-input" method="post" enctype="multipart/form-data">
                 <div class="form-group pb-4">
                     <label for="" class="label pt-2">
                         Tên 
                     </label><br />
                     <input type="text" name="specialty_name" id="" value="{{ $specialty->specialty_name }}" placeholder="Nhập tên chuyên môn "
-                        class="input w-75 rounded-2">
+                        class="input w-75 rounded-2"> <br>
                     <label for="" class="label pt-2">
                        Ảnh 
                     </label><br />
                     <img src="../../images/{{ $specialty->image }}" alt="">
                     <input type="file" name="image" id="" value="" 
-                        class="input w-75 rounded-2">
+                        class="input w-75 rounded-2"> <br>
                     <label for="" class="label pt-2">
                         Mô tả
                     </label><br />

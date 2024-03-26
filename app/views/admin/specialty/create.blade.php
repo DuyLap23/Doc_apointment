@@ -34,12 +34,12 @@
                         Tên 
                     </label><br />
                     <input type="text" name="specialty_name" id="" value="" placeholder="Nhập tên chuyên môn "
-                        class="input w-75 rounded-2">
+                        class="input w-75 rounded-2"> <br>
                     <label for="" class="label pt-2">
                        Ảnh 
                     </label><br />
                     <input type="file" name="image" id="" value="" 
-                        class="input w-75 rounded-2">
+                        class="input w-75 rounded-2"> <br>
                     <label for="" class="label pt-2">
                         Mô tả
                     </label><br />

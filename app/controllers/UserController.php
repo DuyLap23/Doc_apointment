@@ -95,7 +95,7 @@ class UserController extends BaseController
     {
         $del = $this->user->DeleteUser($id);
         if ($del) {
-            redirect('success', 'Xoa thanh cong', 'admin/user/list');
+            redirect('success', 'Xóa thành công tài khoản', 'admin/user/list');
         }
     }
     public function toLogin()
