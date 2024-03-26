@@ -36,10 +36,7 @@ class UserController extends BaseController
         return $this->render('admin.user.list', compact('userSelects'));
     }
 
-    public function index()
-    {
-        return $this->render('admin.index');
-    }
+   
 
     // hàm này để lấy ra các id có cùng type 
     public function GetIdsByType($type)

@@ -6,11 +6,11 @@
                 <h1>Thêm Tài Khoản</h1>
                 <ul class="breadcrumb">
                     <li>
-                        <a href="index.php?act=home">Trang Chủ</a>
+                        <a href="{{ route('/') }}">Trang Chủ</a>
                     </li>
                     <li><i class='bx bx-chevron-right'></i></li>
                     <li>
-                        <a class="" href="index.php?act=listsp">Tài Khoản </a>
+                        <a class="" href="{{ route('admin/user/list') }}">Tài Khoản </a>
                     </li>
                     <li><i class='bx bx-chevron-right'></i></li>
                     <li>

@@ -41,10 +41,10 @@
 			</li>
 
 
-			<li class="{{ (!isset($_GET['url']) || $_GET['url'] === '') ? 'active' : '' }}">
-				<a href="{{ route('') }}">
+			<li class="{{ (!isset($_GET['url']) || $_GET['url'] === 'admin/specialty/list') ? 'active' : '' }}">
+				<a href="{{ route('admin/specialty/list') }}">
 					<i class='bx bxs-category'></i>
-					<span class="text">Danh Mục</span>
+					<span class="text">Chuyên môn</span>
 				</a>
 			</li>
 

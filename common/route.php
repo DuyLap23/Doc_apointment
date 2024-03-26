@@ -22,6 +22,11 @@ $router->get('account/login',[App\Controllers\UserController::class,'toLogin']);
 $router->post('account/dangnhap',[App\Controllers\UserController::class,'login']);
 $router->get('account/register',[App\Controllers\UserController::class,'register']);
 
+// router specialty 
+$router->get('admin/specialty/store',[App\Controllers\SpecialtyController::class,'Store']);
+$router->post('admin/specialty/create',[App\Controllers\SpecialtyController::class,'Create']);
+$router->get('admin/specialty/list',[App\Controllers\SpecialtyController::class,'speSlt']);
+$router->get('admin/specialty/del/{specialty_id}',[App\Controllers\SpecialtyController::class,'speDel']);
 
 // khu vực cần quan tâm -----------
 // bắt đầu định nghĩa ra các đường dẫn
