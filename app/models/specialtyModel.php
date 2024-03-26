@@ -23,11 +23,11 @@ class SpecialtyModel extends BaseModel
         $this->setQuery($sql);
         return $this->execute([$specialty_name , $image , $description ]);
     }
-    public function updateSpecialty($specialty_id )
+    public function updateSpecialty($specialty_id ,$specialty_name , $image , $description )
     {
         $sql = "UPDATE $this->table SET specialty_name = ?, image = ?, description = ? WHERE specialty_id  = ?";
         $this->setQuery($sql);
-        return $this->execute([$_POST['specialty_name'], $_POST['image'], $_POST['description'], $specialty_id ]);
+        return $this->execute([ $specialty_name , $image , $description, $specialty_id ]);
     }
     public function deleteSpecialty($specialty_id )
     {

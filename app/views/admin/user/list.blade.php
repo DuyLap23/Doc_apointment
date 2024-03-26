@@ -164,7 +164,7 @@
                                                 <td class="col ">
                                                     <a
                                                         href="{{ route('admin/user/edit/' . $users->id) }}"><button
-                                                            class="btn status completed">Sửa</button></a>
+                                                            class="btn status completed ">Sửa</button></a>
                                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa Tài Khoản này không?')"
                                                         href="{{ route('admin/user/del/' . $users->id) }}"><button
                                                             class="btn status pending">Xóa</button></a>
