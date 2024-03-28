@@ -62,4 +62,19 @@ class UserModel extends BaseModel
         $this->setQuery($sql);
         return $this->execute([$id]);
     }
+
+    public function getUserById($id)
+    {
+        $sql = "SELECT * FROM $this->table WHERE id = ?";
+        $this->setQuery($sql);
+        return $this->loadRow([$id]);
+    }
+
+    // lấy ảnh cũ 
+    public function getUserImageById($id) {
+        $sql = "SELECT image FROM $this->table WHERE id = ?";
+        $this->setQuery($sql);
+        return $this->loadRow([$id]);
+    }
+ 
 }

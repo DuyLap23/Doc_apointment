@@ -158,4 +158,54 @@ class UserController extends BaseController
     {
         return $this->render('account.login1');
     }
+    public function detailUser($id)
+    {
+    
+        $user = $this->user->getUserById($id);
+    
+       
+        if ($user) {
+       
+            return $this->render('admin.user.edit', compact('user'));
+        } else {
+           
+            redirect('error', 'Bác sĩ không tồn tại', 'admin/user/list');
+        }
+    }
+    
+    
+    public function editUser($id)
+    {
+        // Lấy thông tin mới từ form chỉnh sửa
+        $email = $_POST['email'];
+        $password = md5($_POST['password']);
+        $firstName = $_POST['firstName'];
+        $lastName = $_POST['lastName'];
+        $address = $_POST['address'];
+        $phoneNumber = $_POST['phonenumber'];
+        $gender = $_POST['gender'];
+        $image = $_FILES['image']['name']; // Tên của ảnh mới
+        $tmp_name = $_FILES['image']['tmp_name'];
+    
+        // Kiểm tra xem người dùng đã chọn ảnh mới hay không
+        if (!empty($image)) {
+            // Nếu có ảnh mới, di chuyển vào thư mục
+            move_uploaded_file($tmp_name, 'images/' . $image);
+        } else {
+            // Nếu không có ảnh mới, sử dụng đường dẫn ảnh hiện tại
+            $current_image = $this->user->getUserImageById($id); // Hàm này cần phải được cài đặt để lấy đường dẫn ảnh hiện tại từ cơ sở dữ liệu
+            $image = $current_image['image'];
+        }
+    
+        // Cập nhật thông tin của bác sĩ trong cơ sở dữ liệu
+        $result = $this->user->updateUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phoneNumber, $id);
+    
+        // Kiểm tra kết quả của việc cập nhật
+        if ($result) {
+            redirect('success', 'Cập nhật thông tin thành công', 'admin/user/list');
+        } else {
+            redirect('error', 'Cập nhật thông tin thất bại', 'admin/user/edit/' . $id);
+        }
+    }
+    
 }
