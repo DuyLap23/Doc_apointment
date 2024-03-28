@@ -17,14 +17,26 @@
 
         </div>
         <!-- table -->
-
+        <div>
+            @if (isset($_SESSION['error']))
+                <div id="error-message" class="alert alert-danger">
+                    {{ $_SESSION['error'] }}
+                    @unset ($_SESSION['error'])
+                </div>
+            @elseif(isset($_SESSION['success']))
+                <div id="success-message" class="alert alert-success">
+                    {{ $_SESSION['success'] }}
+                </div>
+                @unset ($_SESSION['success'])
+            @endif
+        </div>
         <div class="container mt-5">
             <a href="{{ route('admin/user/store') }}"><input type="button" value="Tạo Tài Khoản"></a>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#admin"
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#patient"
                         type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
-                        Admin
+                       Bệnh Nhân
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
@@ -34,9 +46,9 @@
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#patient" type="button"
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#admin" type="button"
                         role="tab" aria-controls="profile-tab-pane" aria-selected="false">
-                        Bệnh Nhân
+                       Admin
                     </button>
                 </li>
 
@@ -44,7 +56,7 @@
 
             <div class="tab-content" id="myTabContent">
                 <!-- admin  -->
-                <div class="tab-pane fade show active" id="admin" role="tabpanel" aria-labelledby="home-tab"
+                <div class="tab-pane fade  " id="admin" role="tabpanel" aria-labelledby="home-tab"
                     tabindex="0">
                     <!-- table  -->
                     <div class="table-data">
@@ -71,7 +83,7 @@
                                                     <p> {{ $users->id }}</p>
                                                 </td>
                                                 <td class="col-2 ">
-                                                    {{ $users->email }} 
+                                                    {{ $users->email }}
                                                 </td>
                                                 <td class="col ">
                                                     {{ $users->firstName . ' ' . $users->lastName }}
@@ -87,18 +99,17 @@
                                                 <td class="col ">
                                                     {{ $users->gender_value }}
                                                 </td>
-                                                <td class="col-2" >
+                                                <td class="col-2">
                                                     {{ $users->phonenumber }}
                                                 </td>
                                                 <td class="col ">
                                                     {{ $users->role_value }}
                                                 </td>
                                                 <!-- <td class="col ">
-                                                    {{ $users->position_value }}
-                                                </td> -->
+                                                        {{ $users->position_value }}
+                                                    </td> -->
                                                 <td class="col ">
-                                                    <a 
-                                                        href="{{ route('admin/user/del/' . $users->id) }}"><button
+                                                    <a href="{{ route('admin/user/edit/' . $users->id) }}"><button
                                                             class="btn status completed">sửa</button></a>
                                                 </td>
                                             </tr>
@@ -162,9 +173,14 @@
                                                     {{ $users->position_value }}
                                                 </td>
                                                 <td class="col ">
+<<<<<<< HEAD
                                                     <a
                                                         href="{{ route('admin/user/detail/' . $users->id) }}"><button
                                                             class="btn status completed">Sửa</button></a>
+=======
+                                                    <a href="{{ route('admin/user/edit/' . $users->id) }}"><button
+                                                            class="btn status completed ">Sửa</button></a>
+>>>>>>> 33cd734eef911d899ffa1c1cd0a6322b5e099744
                                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa Tài Khoản này không?')"
                                                         href="{{ route('admin/user/del/' . $users->id) }}"><button
                                                             class="btn status pending">Xóa</button></a>
@@ -180,7 +196,7 @@
                 <!-- end doctor -->
 
                 <!-- patient -->
-                <div class="tab-pane fade" id="patient" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                <div class="tab-pane fade show active" id="patient" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                     <div class="table-data">
                         <div class="order">
                             <table>
@@ -225,8 +241,8 @@
                                                     {{ $users->phonenumber }}
                                                 </td>
                                                 <!-- <td class="col ">
-                                                    {{ $users->role_value }}
-                                                </td> -->
+                                                        {{ $users->role_value }}
+                                                    </td> -->
                                                 <td class="col ">
                                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa Tài Khoản này không?')"
                                                         href="{{ route('admin/user/del/' . $users->id) }}"><button
@@ -245,4 +261,18 @@
         </div>
         </div>
     </main>
+    <script>
+        // Xóa thông báo sau 3 giây
+        setTimeout(function() {
+            var errorMessage = document.getElementById('error-message');
+            if (errorMessage) {
+                errorMessage.remove();
+            }
+
+            var successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                successMessage.remove();
+            }
+        }, 3000); // 3000 milliseconds = 3 giây
+    </script>
 @endsection

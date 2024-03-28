@@ -30,6 +30,8 @@ $router->get('admin/specialty/store',[App\Controllers\SpecialtyController::class
 $router->post('admin/specialty/create',[App\Controllers\SpecialtyController::class,'Create']);
 $router->get('admin/specialty/list',[App\Controllers\SpecialtyController::class,'speSlt']);
 $router->get('admin/specialty/del/{specialty_id}',[App\Controllers\SpecialtyController::class,'speDel']);
+$router->get('admin/specialty/edit/{specialty_id}',[App\Controllers\SpecialtyController::class,'Edit']);
+$router->post('admin/specialty/update/{specialty_id}',[App\Controllers\SpecialtyController::class,'Update']);
 
 // khu vực cần quan tâm -----------
 // bắt đầu định nghĩa ra các đường dẫn

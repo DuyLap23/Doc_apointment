@@ -17,14 +17,28 @@
 
  </div>
  <!-- table -->
+ <div>
+ <?php if(isset($_SESSION['error'])): ?>
+ <div id="error-message" class="alert alert-danger">
+ <?php echo \htmlentities($_SESSION['error']??'', ENT_QUOTES, 'UTF-8', false); ?>
 
+ <?php unset($_SESSION['error']); ?>
+ </div>
+ <?php elseif(isset($_SESSION['success'])): ?>
+ <div id="success-message" class="alert alert-success">
+ <?php echo \htmlentities($_SESSION['success']??'', ENT_QUOTES, 'UTF-8', false); ?>
+
+ </div>
+ <?php unset($_SESSION['success']); ?>
+ <?php endif; ?>
+ </div>
  <div class="container mt-5">
  <a href="<?php echo \htmlentities(route('admin/user/store')??'', ENT_QUOTES, 'UTF-8', false); ?>"><input type="button" value="Tạo Tài Khoản"></a>
  <ul class="nav nav-tabs" id="myTab" role="tablist">
  <li class="nav-item" role="presentation">
- <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#admin"
+ <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#patient"
  type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
- Admin
+ Bệnh Nhân
  </button>
  </li>
  <li class="nav-item" role="presentation">
@@ -34,9 +48,9 @@
  </button>
  </li>
  <li class="nav-item" role="presentation">
- <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#patient" type="button"
+ <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#admin" type="button"
  role="tab" aria-controls="profile-tab-pane" aria-selected="false">
- Bệnh Nhân
+ Admin
  </button>
  </li>
 
@@ -44,7 +58,7 @@
 
  <div class="tab-content" id="myTabContent">
  <!-- admin  -->
- <div class="tab-pane fade show active" id="admin" role="tabpanel" aria-labelledby="home-tab"
+ <div class="tab-pane fade  " id="admin" role="tabpanel" aria-labelledby="home-tab"
  tabindex="0">
  <!-- table  -->
  <div class="table-data">
@@ -72,7 +86,8 @@
  <p> <?php echo \htmlentities($users->id??'', ENT_QUOTES, 'UTF-8', false); ?></p>
  </td>
  <td class="col-2 ">
- <?php echo \htmlentities($users->email??'', ENT_QUOTES, 'UTF-8', false); ?> 
+ <?php echo \htmlentities($users->email??'', ENT_QUOTES, 'UTF-8', false); ?>
+
  </td>
  <td class="col ">
  <?php echo \htmlentities($users->firstName . ' ' . $users->lastName??'', ENT_QUOTES, 'UTF-8', false); ?>
@@ -91,7 +106,7 @@
  <?php echo \htmlentities($users->gender_value??'', ENT_QUOTES, 'UTF-8', false); ?>
 
  </td>
- <td class="col-2" >
+ <td class="col-2">
  <?php echo \htmlentities($users->phonenumber??'', ENT_QUOTES, 'UTF-8', false); ?>
 
  </td>
@@ -104,8 +119,7 @@
 
  </td> -->
  <td class="col ">
- <a 
- href="<?php echo \htmlentities(route('admin/user/del/' . $users->id)??'', ENT_QUOTES, 'UTF-8', false); ?>"><button
+ <a href="<?php echo \htmlentities(route('admin/user/edit/' . $users->id)??'', ENT_QUOTES, 'UTF-8', false); ?>"><button
  class="btn status completed">sửa</button></a>
  </td>
  </tr>
@@ -175,9 +189,14 @@
 
  </td>
  <td class="col ">
+<<<<<<< HEAD
  <a
  href="<?php echo \htmlentities(route('admin/user/detail/' . $users->id)??'', ENT_QUOTES, 'UTF-8', false); ?>"><button
  class="btn status completed">Sửa</button></a>
+=======
+ <a href="<?php echo \htmlentities(route('admin/user/edit/' . $users->id)??'', ENT_QUOTES, 'UTF-8', false); ?>"><button
+ class="btn status completed ">Sửa</button></a>
+>>>>>>> 33cd734eef911d899ffa1c1cd0a6322b5e099744
  <a onclick="return confirm('Bạn có chắc chắn muốn xóa Tài Khoản này không?')"
  href="<?php echo \htmlentities(route('admin/user/del/' . $users->id)??'', ENT_QUOTES, 'UTF-8', false); ?>"><button
  class="btn status pending">Xóa</button></a>
@@ -193,7 +212,7 @@
  <!-- end doctor -->
 
  <!-- patient -->
- <div class="tab-pane fade" id="patient" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+ <div class="tab-pane fade show active" id="patient" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
  <div class="table-data">
  <div class="order">
  <table>
@@ -264,6 +283,20 @@
  </div>
  </div>
  </main>
+ <script>
+ // Xóa thông báo sau 3 giây
+ setTimeout(function() {
+ var errorMessage = document.getElementById('error-message');
+ if (errorMessage) {
+ errorMessage.remove();
+ }
+
+ var successMessage = document.getElementById('success-message');
+ if (successMessage) {
+ successMessage.remove();
+ }
+ }, 3000); // 3000 milliseconds = 3 giây
+ </script>
 <?php $this->stopSection(); ?>
 
 <?php if (isset($_shouldextend[1])) { echo $this->runChild('layout.main'); } ?>
