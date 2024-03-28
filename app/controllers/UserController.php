@@ -162,13 +162,16 @@ class UserController extends BaseController
     {
         $user = $this->user->getUserById($id);
         if ($user) {
-       
-            return $this->render('admin.user.edit', compact('user'));
+            // Lấy danh sách giới tính
+            $genderIds = $this->GetIdsByType('GENDER');
+    
+            // Truyền dữ liệu người dùng và danh sách giới tính vào view
+            return $this->render('admin.user.edit', compact('user', 'genderIds'));
         } else {
-           
             redirect('error', 'Bác sĩ không tồn tại', 'admin/user/list');
         }
     }
+    
     
     
     public function editUser($id)
@@ -204,6 +207,7 @@ class UserController extends BaseController
         } else {
             redirect('error', 'Cập nhật thông tin thất bại', 'admin/user/edit/' . $id);
         }
+     
     }
     
 }

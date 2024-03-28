@@ -1,17 +1,17 @@
 <?php $_shouldextend[1]=1; ?>
 <?php $this->startSection('content'); ?>
- <?php if(isset($_SESSION['errors']) && isset($_GET['msg'])): ?>
- <ul>
+<?php if(isset($_SESSION['errors']) && isset($_GET['msg'])): ?>
+<ul>
  <?php $__currentLoopData = $_SESSION['errors']; $this->addLoop($__currentLoopData);$this->getFirstLoop();
  foreach($__currentLoopData as $error): $loop = $this->incrementLoopIndices();  ?>
  <li style="color: red"><?php echo \htmlentities($error??'', ENT_QUOTES, 'UTF-8', false); ?></li>
  <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
- </ul>
- <?php endif; ?>
- <?php if(isset($_SESSION['success']) && isset($_GET['msg'])): ?>
- <span style="color: green"><?php echo \htmlentities($_SESSION['success']??'', ENT_QUOTES, 'UTF-8', false); ?></span>
- <?php endif; ?>
- <main>
+</ul>
+<?php endif; ?>
+<?php if(isset($_SESSION['success']) && isset($_GET['msg'])): ?>
+<span style="color: green"><?php echo \htmlentities($_SESSION['success']??'', ENT_QUOTES, 'UTF-8', false); ?></span>
+<?php endif; ?>
+<main>
  <div class="head-title">
  <div class="left">
  <h1>Chuyên môn</h1>
@@ -41,46 +41,50 @@
 
  <div class="form-group pb-4">
  <label for="">Email</label> <br>
- <input type="text" class="input w-75 rounded-2" name="email" value="<?php echo \htmlentities($user->email??'', ENT_QUOTES, 'UTF-8', false); ?>"/> <br>
- 
+ <input type="text" class="input w-75 rounded-2" name="email" value="<?php echo \htmlentities($user->email??'', ENT_QUOTES, 'UTF-8', false); ?>" /> <br>
+
  <label for="" class="label pt-2">Mật khẩu</label> <br>
 
- <input type="text" class="input w-75 rounded-2" name="password" value="<?php echo \htmlentities($user->password??'', ENT_QUOTES, 'UTF-8', false); ?>"/> <br>
- 
- <label for="" class="label pt-2">Họ</label> <br>
- <input type="text" class="input w-75 rounded-2" name="firstName" value="<?php echo \htmlentities($user->firstName??'', ENT_QUOTES, 'UTF-8', false); ?>"/> <br>
- 
- <label for="" class="label pt-2">Tên</label> <br>
- <input type="text" class="input w-75 rounded-2" name="lastName" value="<?php echo \htmlentities($user->lastName??'', ENT_QUOTES, 'UTF-8', false); ?>"/> <br>
- 
- <label for="" class="label pt-2">Số điện thoại</label> <br>
- <input type="text" class="input w-75 rounded-2" name="phonenumber" value="<?php echo \htmlentities($user->phonenumber??'', ENT_QUOTES, 'UTF-8', false); ?>"/> <br>
- 
- <label for="" class="label pt-2">Địa chỉ</label> <br>
- <input type="text" class="input w-75 rounded-2 "name="address" value="<?php echo \htmlentities($user->address??'', ENT_QUOTES, 'UTF-8', false); ?>"/>  <br>
- 
- <label for="" class="label pt-2">Giới tính</label> <br>
- <input type="text" class="input w-75 rounded-2 "name="gender" value="<?php echo \htmlentities($user->gender??'', ENT_QUOTES, 'UTF-8', false); ?>"/> <br>
- 
- <label for="" class="label pt-2">Ảnh</label> <br>
- <img src="../../../images/<?php echo \htmlentities($user->image??'', ENT_QUOTES, 'UTF-8', false); ?>"  width="150px" alt=""> <br>
- <input  type="file" name="image" > <br>
- </div>
- 
+ <input type="text" class="input w-75 rounded-2" name="password" value="<?php echo \htmlentities($user->password??'', ENT_QUOTES, 'UTF-8', false); ?>" /> <br>
 
- <input type="submit" name="submit" id="" value="Cập Nhật"
- class="btn btn-insert  status completed ">
+ <label for="" class="label pt-2">Họ</label> <br>
+ <input type="text" class="input w-75 rounded-2" name="firstName" value="<?php echo \htmlentities($user->firstName??'', ENT_QUOTES, 'UTF-8', false); ?>" /> <br>
+
+ <label for="" class="label pt-2">Tên</label> <br>
+ <input type="text" class="input w-75 rounded-2" name="lastName" value="<?php echo \htmlentities($user->lastName??'', ENT_QUOTES, 'UTF-8', false); ?>" /> <br>
+
+ <label for="" class="label pt-2">Số điện thoại</label> <br>
+ <input type="text" class="input w-75 rounded-2" name="phonenumber" value="<?php echo \htmlentities($user->phonenumber??'', ENT_QUOTES, 'UTF-8', false); ?>" /> <br>
+
+ <label for="" class="label pt-2">Địa chỉ</label> <br>
+ <input type="text" class="input w-75 rounded-2 " name="address" value="<?php echo \htmlentities($user->address??'', ENT_QUOTES, 'UTF-8', false); ?>" /> <br>
+
+ <label for="" class="label pt-2">Giới tính</label> <br>
+ <select name="gender" id="" class="form-control mt-2 rounded-3 w-75">
+ <?php $__currentLoopData = $genderIds; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $key => $gender): $loop = $this->incrementLoopIndices();  ?>
+ <option value="<?php echo \htmlentities($gender->id_codetype??'', ENT_QUOTES, 'UTF-8', false); ?>"><?php echo \htmlentities($gender->value??'', ENT_QUOTES, 'UTF-8', false); ?></option>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </select> <br>
+
+
+ <label for="" class="label pt-2">Ảnh</label> <br>
+ <img src="../../../images/<?php echo \htmlentities($user->image??'', ENT_QUOTES, 'UTF-8', false); ?>" width="150px" alt=""> <br>
+ <input type="file" name="image"> <br>
+ </div>
+
+
+ <input type="submit" name="submit" id="" value="Cập Nhật" class="btn btn-insert  status completed ">
  <input type="reset" name="reset" id="" value="Nhập Lại" class=" btn btn-reset ">
  </form>
  <a href="<?php echo \htmlentities(route('admin/specialty/list')??'', ENT_QUOTES, 'UTF-8', false); ?>"><button class="btn btn-insert  status completed mt-4">Các
  chuyên môn
  </button></a>
- 
- 
+
+
  </form>
  </div>
  </div>
- </main>
+</main>
 <?php $this->stopSection(); ?>
-
 <?php if (isset($_shouldextend[1])) { echo $this->runChild('layout.main'); } ?>
