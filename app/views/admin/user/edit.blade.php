@@ -44,7 +44,8 @@
             </tr>
             <tr>
                 <td>Ảnh đại diện</td>
-                <td><input type="file" name="image" value="{{ $user->image }}"/></td>
+                <img src="../../../images/{{ $user->image }}" alt="">
+                <td><input type="file" name="image" ></td>
             </tr>
 
             <tr>

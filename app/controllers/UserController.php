@@ -160,10 +160,7 @@ class UserController extends BaseController
     }
     public function detailUser($id)
     {
-    
         $user = $this->user->getUserById($id);
-    
-       
         if ($user) {
        
             return $this->render('admin.user.edit', compact('user'));
@@ -188,13 +185,14 @@ class UserController extends BaseController
         $tmp_name = $_FILES['image']['tmp_name'];
     
         // Kiểm tra xem người dùng đã chọn ảnh mới hay không
-        if (!empty($image)) {
-            // Nếu có ảnh mới, di chuyển vào thư mục
+        if(isset($_FILES['image']['name']) && $_FILES['image']['name'] != '') {
+            $image = $_FILES['image']['name'];
+            $tmp_name = $_FILES['image']['tmp_name'];
             move_uploaded_file($tmp_name, 'images/' . $image);
         } else {
-            // Nếu không có ảnh mới, sử dụng đường dẫn ảnh hiện tại
-            $current_image = $this->user->getUserImageById($id); // Hàm này cần phải được cài đặt để lấy đường dẫn ảnh hiện tại từ cơ sở dữ liệu
-            $image = $current_image['image'];
+            // Nếu không có ảnh mới được tải lên, giữ nguyên ảnh cũ bằng cách lấy tên ảnh từ cơ sở dữ liệu
+            $current_specialty = $this->user->getUserById($id);
+            $image = $current_specialty->image; // Sử dụng dấu mũi tên để truy cập thuộc tính 'image' của đối tượng stdClass
         }
     
         // Cập nhật thông tin của bác sĩ trong cơ sở dữ liệu

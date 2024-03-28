@@ -21,6 +21,7 @@ $router->get('/',[App\Controllers\HomeController::class,'home']);
 $router->get('account/login',[App\Controllers\UserController::class,'toLogin']);
 $router->post('account/dangnhap',[App\Controllers\UserController::class,'login']);
 $router->get('account/register',[App\Controllers\UserController::class,'register']);
+
 $router->post('admin/user/edit/{id}',[App\Controllers\UserController::class,'editUser']);
 $router->get('admin/user/detail/{id}',[App\Controllers\UserController::class,'detailUser']);
 

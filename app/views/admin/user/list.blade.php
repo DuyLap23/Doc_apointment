@@ -173,14 +173,10 @@
                                                     {{ $users->position_value }}
                                                 </td>
                                                 <td class="col ">
-<<<<<<< HEAD
+
                                                     <a
                                                         href="{{ route('admin/user/detail/' . $users->id) }}"><button
                                                             class="btn status completed">Sửa</button></a>
-=======
-                                                    <a href="{{ route('admin/user/edit/' . $users->id) }}"><button
-                                                            class="btn status completed ">Sửa</button></a>
->>>>>>> 33cd734eef911d899ffa1c1cd0a6322b5e099744
                                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa Tài Khoản này không?')"
                                                         href="{{ route('admin/user/del/' . $users->id) }}"><button
                                                             class="btn status pending">Xóa</button></a>
