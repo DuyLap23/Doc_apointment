@@ -161,21 +161,24 @@ class UserController extends BaseController
     public function detailUser($id)
     {
         $user = $this->user->getUserById($id);
+        
         if ($user) {
-       
-            return $this->render('admin.user.edit', compact('user'));
+            // Lấy danh sách giới tính
+            $genderIds = $this->GetIdsByType('GENDER');
+
+            return $this->render('admin.user.edit', compact('user', 'genderIds'));
         } else {
-           
             redirect('error', 'Bác sĩ không tồn tại', 'admin/user/list');
         }
     }
+    
     
     
     public function editUser($id)
     {
         // Lấy thông tin mới từ form chỉnh sửa
         $email = $_POST['email'];
-        $password = md5($_POST['password']);
+        $password = ($_POST['password']);
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
         $address = $_POST['address'];
@@ -204,6 +207,7 @@ class UserController extends BaseController
         } else {
             redirect('error', 'Cập nhật thông tin thất bại', 'admin/user/edit/' . $id);
         }
+     
     }
     
 }
