@@ -50,10 +50,11 @@
                     <label for="" class="label">Địa chỉ</label> <br>
                     <input type="text" class="input w-75 rounded-2 form-control " name="address" value="{{ $user->address }}" /> <br>
 
-                    <label for="" class="label">Giới tính</label> <br>
+                    <label for="" class="label pt-2">Giới tính</label> <br>
                     <select name="gender" id="" class="form-control mt-2 rounded-3 w-75">
-                        @foreach ($genderIds as $key => $gender)
-                        <option value="{{ $gender->id_codetype }}">{{ $gender->value }}</option>
+                        <option value="{{ $gender->gender_value }}">{{ $gender->gender_value }}</option>
+                        @foreach ($genders as $gender)
+                        <option value="{{ $gender->id }}">{{ $gender->gender_value }}</option>
                         @endforeach
                     </select> <br>
 

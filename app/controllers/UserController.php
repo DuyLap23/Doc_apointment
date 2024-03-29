@@ -160,16 +160,22 @@ class UserController extends BaseController
     }
     public function detailUser($id)
     {
-        $user = $this->user->getUserById($id);
-        
-        if ($user) {
-            // Lấy danh sách giới tính
-            $genderIds = $this->GetIdsByType('GENDER');
+        $userModel = new UserModel();
 
-            return $this->render('admin.user.edit', compact('user', 'genderIds'));
-        } else {
+        // Lấy thông tin người dùng
+        $user = $userModel->getUserById($id);
+        if (!$user) {
             redirect('error', 'Bác sĩ không tồn tại', 'admin/user/list');
         }
+
+        // Lấy thông tin giới tính của bác sĩ
+        $gender = $userModel->getGenderById($id);
+
+        // Lấy danh sách giới tính
+        $genders = $userModel->getAllGenders(); // Đây là phương thức bạn cần thêm vào UserModel
+
+        // Truyền dữ liệu người dùng, giới tính và danh sách giới tính vào view
+        return $this->render('admin.user.edit', compact('user', 'gender', 'genders'));
     }
     
     

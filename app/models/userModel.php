@@ -69,7 +69,24 @@ class UserModel extends BaseModel
         $this->setQuery($sql);
         return $this->loadRow([$id]);
     }
+    public function getGenderById($id)
+    {
+        $sql = "SELECT gender_codetype.value AS gender_value
+                FROM $this->table
+                JOIN codetype AS gender_codetype ON $this->table.gender = gender_codetype.id_codetype
+                WHERE $this->table.id = ?";
+        $this->setQuery($sql);
+        return $this->loadRow([$id]);
+    }
+    public function getAllGenders()
+    {
+        // Truy vấn SQL để lấy danh sách các giới tính
+        $sql = "SELECT id_codetype, value AS gender_value FROM codetype WHERE type = 'GENDER'";
 
+        // Thực hiện truy vấn
+        $this->setQuery($sql);
+        return $this->loadAllRows();
+    }
  
  
 }

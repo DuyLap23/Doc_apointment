@@ -6,9 +6,8 @@
         }
     },
     "require": {
-        "illuminate/events": "^10.47",
-        "eftec/bladeone": "^4.12",
         "phroute/phroute": "^2.2",
-        "pagerfanta/pagerfanta": "*"
+        "eftec/bladeone": "^4.13",
+        "illuminate/events": "^11.1"
     }
 }
