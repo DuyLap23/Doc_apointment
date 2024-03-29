@@ -15,7 +15,7 @@
                 </li>
                 <li><i class='bx bx-chevron-right'></i></li>
                 <li>
-                    <a class="active" href="#">Sửa tài khoản bác sĩ</a>
+                    <a class="active" href="#">Thay đổi thông tin </a>
                 </li>
             </ul>
         </div>
