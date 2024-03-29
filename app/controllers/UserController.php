@@ -72,7 +72,7 @@ class UserController extends BaseController
     public function Create()
     {
         $email = $_POST['email'];
-        $password = md5($_POST['password']);
+        $password = ($_POST['password']);
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
         $address = $_POST['address'];
@@ -143,7 +143,7 @@ class UserController extends BaseController
     public function registers()
     {
         $email = $_POST['email'];
-        $password = md5($_POST['password']);
+        $password = ($_POST['password']);
         $lastName = $_POST['lastName'];
         $address = $_POST['address'];
         $phoneNumber = $_POST['phonenumber'];

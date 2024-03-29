@@ -36,7 +36,7 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#patient"
                         type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
-                       Bệnh Nhân
+                        Bệnh Nhân
                     </button>
                 </li>
                 <li class="nav-item" role="presentation">
@@ -48,7 +48,7 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#admin" type="button"
                         role="tab" aria-controls="profile-tab-pane" aria-selected="false">
-                       Admin
+                        Admin
                     </button>
                 </li>
 
@@ -56,8 +56,7 @@
 
             <div class="tab-content" id="myTabContent">
                 <!-- admin  -->
-                <div class="tab-pane fade  " id="admin" role="tabpanel" aria-labelledby="home-tab"
-                    tabindex="0">
+                <div class="tab-pane fade  " id="admin" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
                     <!-- table  -->
                     <div class="table-data">
                         <div class="order">
@@ -106,10 +105,10 @@
                                                     {{ $users->role_value }}
                                                 </td>
                                                 <!-- <td class="col ">
-                                                        {{ $users->position_value }}
-                                                    </td> -->
+                                                            {{ $users->position_value }}
+                                                        </td> -->
                                                 <td class="col ">
-                                                    <a href="{{ route('admin/user/edit/' . $users->id) }}"><button
+                                                    <a href="{{ route('admin/user/detail/' . $users->id) }}"><button
                                                             class="btn status completed">sửa</button></a>
                                                 </td>
                                             </tr>
@@ -174,8 +173,7 @@
                                                 </td>
                                                 <td class="col ">
 
-                                                    <a
-                                                        href="{{ route('admin/user/detail/' . $users->id) }}"><button
+                                                    <a href="{{ route('admin/user/detail/' . $users->id) }}"><button
                                                             class="btn status completed">Sửa</button></a>
                                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa Tài Khoản này không?')"
                                                         href="{{ route('admin/user/del/' . $users->id) }}"><button
@@ -192,7 +190,8 @@
                 <!-- end doctor -->
 
                 <!-- patient -->
-                <div class="tab-pane fade show active" id="patient" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                <div class="tab-pane fade show active" id="patient" role="tabpanel" aria-labelledby="profile-tab"
+                    tabindex="0">
                     <div class="table-data">
                         <div class="order">
                             <table>
@@ -237,8 +236,8 @@
                                                     {{ $users->phonenumber }}
                                                 </td>
                                                 <!-- <td class="col ">
-                                                        {{ $users->role_value }}
-                                                    </td> -->
+                                                            {{ $users->role_value }}
+                                                        </td> -->
                                                 <td class="col ">
                                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa Tài Khoản này không?')"
                                                         href="{{ route('admin/user/del/' . $users->id) }}"><button
