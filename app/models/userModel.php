@@ -41,6 +41,7 @@ class UserModel extends BaseModel
         $this->setQuery($sql);
         return $this->loadAllRows([$type]); //lấy ra các tham số có cùng type
     }
+  
 
     public function InsertUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber, $roleId, $positionId)
     {

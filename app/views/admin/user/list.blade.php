@@ -45,8 +45,8 @@
                         Bác Sĩ
                     </button>
                 </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#admin" type="button"
+                <li class="nav-item " role="presentation">
+                    <button class="nav-link " id="profile-tab" data-bs-toggle="tab" data-bs-target="#admin" type="button"
                         role="tab" aria-controls="profile-tab-pane" aria-selected="false">
                         Admin
                     </button>
@@ -63,51 +63,36 @@
                             <table>
                                 <thead>
                                     <tr class="row">
-                                        <th class="col ">Mã Tài Khoản</th>
-                                        <th class="col-2">Email</th>
-                                        <th class="col">Tên Tài Khoản</th>
-                                        <th class="col">Ảnh</th>
-                                        <th class="col-2">Địa Chỉ</th>
-                                        <th class="col">Giới Tính</th>
-                                        <th class="col-2">Số Điện Thoại</th>
-                                        <th class="col">Vai Trò</th>
-                                        <th class="col">Sửa</th>
+                                        <th class="col-1">Mã Tài Khoản</th>
+                                        <th class="col-3">Tên Tài Khoản</th>
+                                        <th class="col-2">Ảnh</th>
+                                        <th class="col-4">Thông tin </th>
+                                        <th class="col-2">Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (isset($userSelects['3']))
                                         @foreach ($userSelects['3'] as $users)
                                             <tr class="tr-shadow row ">
-                                                <td class="col mb-5">
-                                                    <p> {{ $users->id }}</p>
-                                                </td>
-                                                <td class="col-2 ">
-                                                    {{ $users->email }}
-                                                </td>
-                                                <td class="col ">
-                                                    {{ $users->firstName . ' ' . $users->lastName }}
+                                                <td class="col-1  ">
+                                                    <p>{{ $users->id }}</p>
                                                 </td>
 
-                                                <td class="col ">
+                                                <td class="col-3">
+                                                    <p> {{ $users->firstName . ' ' . $users->lastName }}</p>
+                                                </td>
+
+                                                <td class="col-2">
                                                     <img src="../../images/{{ $users->image }}" alt=""
                                                         width="100px" height="100px" class="rounded-4">
                                                 </td>
+                                                <td class="col-4">
+                                                    <p> <strong>Email</strong> : {{ $users->email }}</p>
+                                                    <p><strong>SDT </strong>: {{ $users->phonenumber }}</p>
+                                                    <p><strong>Giới tính</strong> : {{ $users->gender_value }}</p>
+                                                    <p><strong>Địa chỉ</strong> : {{ $users->address }}</p>
+                                                </td>
                                                 <td class="col-2">
-                                                    {{ $users->address }}
-                                                </td>
-                                                <td class="col ">
-                                                    {{ $users->gender_value }}
-                                                </td>
-                                                <td class="col-2">
-                                                    {{ $users->phonenumber }}
-                                                </td>
-                                                <td class="col ">
-                                                    {{ $users->role_value }}
-                                                </td>
-                                                <!-- <td class="col ">
-                                                            {{ $users->position_value }}
-                                                        </td> -->
-                                                <td class="col ">
                                                     <a href="{{ route('admin/user/detail/' . $users->id) }}"><button
                                                             class="btn status completed">sửa</button></a>
                                                 </td>
@@ -120,9 +105,6 @@
                     </div>
                     <!-- table  -->
                 </div>
-                <!-- end admin  -->
-
-
                 <!-- doctor -->
                 <div class="tab-pane fade" id="doctor" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
                     <div class="table-data">
@@ -130,48 +112,47 @@
                             <table class=" table-striped ">
                                 <thead>
                                     <tr class="row">
-                                        <th class="col ">Mã Tài Khoản</th>
-                                        <th class="col-3">Email</th>
-                                        <th class="col">Tên Tài Khoản</th>
-                                        <th class="col">Ảnh</th>
-                                        <th class="col-2 ">Địa Chỉ</th>
-                                        <th class="col">Giới Tính</th>
-                                        <th class="col">Số Điện Thoại</th>
-                                        <th class="col">Chức vụ</th>
-                                        <th class="col">Thao tác</th>
+                                        <th class="col-1">Mã Tài Khoản</th>
+                                        <th class="col-2">Tên Tài Khoản</th>
+                                        <th class="col-1">Ảnh</th>
+                                        <th class="col-4">Thông tin </th>
+                                        <th class="col-2">Chức vụ</th>
+                                        <th class="col-1">Đặt lịch</th>
+                                        <th class="col-1">Thao tác</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (isset($userSelects['2']))
                                         @foreach ($userSelects['2'] as $users)
                                             <tr class="tr-shadow row ">
-                                                <td class="col  mb-5">
-                                                    <p class=""> {{ $users->id }}</p>
+                                                <td class="col-1">
+                                                    <p class="col"> {{ $users->id }}</p>
                                                 </td>
-                                                <td class="col-3 ">
-                                                    <p class=""> {{ $users->email }} </p>
-                                                </td>
-                                                <td class="col ">
+                                                <td class="col-2">
                                                     {{ $users->firstName . ' ' . $users->lastName }}
                                                 </td>
 
-                                                <td class="col ">
+                                                <td class="col-1">
                                                     <img src="../../images/{{ $users->image }}" alt=""
                                                         width="100px" height="100px" class="rounded-4">
                                                 </td>
-                                                <td class="col-2 ">
-                                                    {{ $users->address }}
+                                                <td class="col-4">
+                                                    <p><strong>Email :</strong> {{ $users->email }} </p>
+                                                    <p><strong>SDT :</strong> {{ $users->phonenumber }}</p>
+                                                    <p><strong>Giới tính :</strong> {{ $users->gender_value }}</p>
+                                                    <p><strong>Địa chỉ :</strong> {{ $users->address }}</p>
                                                 </td>
-                                                <td class="col ">
-                                                    {{ $users->gender_value }}
+
+                                                <td class="col-2">
+                                                    <p><strong>Vai trò :</strong> {{ $users->role_value }}</p>
+                                                    <p><strong>Chức vụ :</strong> {{ $users->position_value }}</p>
+                                                    <p><strong>Chuyên môn :</strong> </p>
+
                                                 </td>
-                                                <td class="col  ">
-                                                    {{ $users->phonenumber }}
-                                                </td>
-                                                <td class="col ">
-                                                    {{ $users->position_value }}
-                                                </td>
-                                                <td class="col ">
+                                                <td class="col-1"><button class="btn status bluecheck"><a
+                                                            class="text-decoration-none text-white" href="">Đặt
+                                                            lịch</a></button></td>
+                                                <td class="col-1">
 
                                                     <a href="{{ route('admin/user/detail/' . $users->id) }}"><button
                                                             class="btn status completed">Sửa</button></a>
@@ -197,48 +178,38 @@
                             <table>
                                 <thead>
                                     <tr class="row">
-                                        <th class="col ">Mã Tài Khoản</th>
-                                        <th class="col-3">Email</th>
-                                        <th class="col-2">Tên Tài Khoản</th>
-                                        <th class="col">Ảnh</th>
-                                        <th class="col-2 ">Địa Chỉ</th>
-                                        <th class="col">Giới Tính</th>
-                                        <th class="col">Số Điện Thoại</th>
-                                        <!-- <th class="col">Vai Trò</th> -->
-                                        <th class="col">Xóa</th>
+                                        <th class="col-1">Mã Tài Khoản</th>
+                                        <th class="col-3">Tên Tài Khoản</th>
+                                        <th class="col-2">Ảnh</th>
+                                        <th class="col-4">Thông tin</th>
+                                        <th class="col-2">Xóa</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (isset($userSelects['1']))
                                         @foreach ($userSelects['1'] as $users)
                                             <tr class="tr-shadow row ">
-                                                <td class="col mb-5">
+                                                <td class="col-1">
                                                     <p> {{ $users->id }}</p>
                                                 </td>
-                                                <td class="col-3  ">
-                                                    <p class=""> {{ $users->email }} </p>
-                                                </td>
-                                                <td class="col-2 ">
+                                                <td class="col-3">
                                                     {{ $users->firstName . ' ' . $users->lastName }}
                                                 </td>
 
-                                                <td class="col ">
+                                                <td class="col-2">
                                                     <img src="../../images/{{ $users->image }}" alt=""
                                                         width="100px" height="100px" class="rounded-4">
                                                 </td>
-                                                <td class="col-2 ">
-                                                    {{ $users->address }}
+
+                                                <td class="col-4">
+                                                   <p><strong>Email :</strong>  {{ $users->email }}</p>
+                                                   <p><strong>SDT :</strong>  {{ $users->phonenumber }}</p>
+                                                   <p><strong>Giới tính :</strong> {{ $users->gender_value }}</p>
+                                                   <p><strong>Địa chỉ :</strong> {{ $users->address }}</p>
                                                 </td>
-                                                <td class="col ">
-                                                    {{ $users->gender_value }}
-                                                </td>
-                                                <td class="col ">
-                                                    {{ $users->phonenumber }}
-                                                </td>
-                                                <!-- <td class="col ">
-                                                            {{ $users->role_value }}
-                                                        </td> -->
-                                                <td class="col ">
+
+                                                
+                                                <td class="col-2">
                                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa Tài Khoản này không?')"
                                                         href="{{ route('admin/user/del/' . $users->id) }}"><button
                                                             class="btn status pending">xóa</button></a>
@@ -252,6 +223,10 @@
                     </div>
                 </div>
                 <!-- end patient -->
+                <!-- end admin  -->
+
+
+
             </div>
         </div>
         </div>
