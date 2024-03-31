@@ -146,7 +146,7 @@
                                                 <td class="col-2">
                                                     <p><strong>Vai trò :</strong> {{ $users->role_value }}</p>
                                                     <p><strong>Chức vụ :</strong> {{ $users->position_value }}</p>
-                                                    <p><strong>Chuyên môn :</strong> </p>
+                                                    <p><strong>Chuyên môn :</strong> {{ $users->specialty_name }}</p>
 
                                                 </td>
                                                 <td class="col-1"><button class="btn status bluecheck"><a

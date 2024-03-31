@@ -28,7 +28,7 @@ class UserController extends BaseController
             $users = $this->user->SelectUser($role->roleId); // Sử dụng -> thay vì ['roleId']
 
             // Kiểm tra xem có dữ liệu trả về không
-            if (!empty ($users)) {
+            if (!empty($users)) {
                 // Lưu danh sách người dùng vào mảng userSelects theo roleId
                 $userSelects[$role->roleId] = $users;
             }
@@ -36,9 +36,7 @@ class UserController extends BaseController
         return $this->render('admin.user.list', compact('userSelects'));
     }
 
-   
-
-    // hàm này để lấy ra các id có cùng type 
+    // hàm này để lấy ra các id có cùng type
     public function GetIdsByType($type)
     {
         // Truy vấn các id từ bảng 'codetype' mà có 'type' tương ứng
@@ -72,7 +70,7 @@ class UserController extends BaseController
     public function Create()
     {
         $email = $_POST['email'];
-        $password = ($_POST['password']);
+        $password = $_POST['password'];
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
         $address = $_POST['address'];
@@ -83,7 +81,8 @@ class UserController extends BaseController
         move_uploaded_file($tmp_name, 'images/' . $image);
         $roleId = 1;
         $positionId = 20;
-        $result = $this->user->InsertUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phoneNumber, $roleId, $positionId);
+        $specialty = 13;
+        $result = $this->user->InsertUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phoneNumber, $roleId, $positionId, $specialty);
         if ($result) {
             redirect('success', 'Đăng ký thành công', 'admin/user/list');
         } else {
@@ -104,7 +103,7 @@ class UserController extends BaseController
     }
     public function login()
     {
-        if (isset ($_POST['emailLogin']) && isset ($_POST['passwordLogin'])) {
+        if (isset($_POST['emailLogin']) && isset($_POST['passwordLogin'])) {
             $email = htmlspecialchars($_POST['emailLogin']);
             $password = $_POST['passwordLogin'];
 
@@ -140,62 +139,39 @@ class UserController extends BaseController
         }
     }
 
-    public function registers()
-    {
-        $email = $_POST['email'];
-        $password = ($_POST['password']);
-        $lastName = $_POST['lastName'];
-        $address = $_POST['address'];
-        $phoneNumber = $_POST['phonenumber'];
-        $result = $this->logins->register($email, $password, $lastName, $address, $phoneNumber);
-        if ($result) {
-            redirect('success', 'Đăng ký thành công', 'admin/home/home');
-        } else {
-            redirect('error', 'Đăng ký thất bại', 'admin/home/home');
-        }
-    }
-    public function login1()
-    {
-        return $this->render('account.login1');
-    }
+    // public function registers()
+    // {
+    //     $email = $_POST['email'];
+    //     $password = $_POST['password'];
+    //     $lastName = $_POST['lastName'];
+    //     $address = $_POST['address'];
+    //     $phoneNumber = $_POST['phonenumber'];
+    //     $result = $this->logins->register($email, $password, $lastName, $address, $phoneNumber);
+    //     if ($result) {
+    //         redirect('success', 'Đăng ký thành công', 'admin/home/home');
+    //     } else {
+    //         redirect('error', 'Đăng ký thất bại', 'admin/home/home');
+    //     }
+    // }
+    
     public function detailUser($id)
     {
-        $userModel = new UserModel();
-    
-        // Lấy thông tin người dùng
-        $user = $userModel->getUserById($id);
-        if (!$user) {
-            redirect('error', 'Bác sĩ không tồn tại', 'admin/user/list');
-        }
-    
-        // Lấy thông tin giới tính của bác sĩ
-        $gender = $userModel->getGenderById($id);
-    
-        // Lấy danh sách giới tính
-        $genders = $userModel->getAllGenders(); // Đây là phương thức bạn cần thêm vào UserModel
-    
-        // Kiểm tra xem giới tính của người dùng đã tồn tại trong danh sách giới tính hay chưa
-        $genderExists = false;
-        foreach ($genders as $key => $value) {
-            if ($value->gender_value == $gender->gender_value) {
-                unset($genders[$key]); // Loại bỏ giới tính của người dùng khỏi danh sách giới tính
-                $genderExists = true;
-                break;
-            }
-        }
-    
-        // Truyền dữ liệu người dùng, giới tính và danh sách giới tính vào view
-        return $this->render('admin.user.edit', compact('user', 'gender', 'genders', 'genderExists'));
+        $user = $this->user->getUserById($id);
+        $speciatly = $this->user->SpecialtyById($id);
+        $selectSpecialty = $this->user->selectSpecialty();
+        $gender = $this->GetIdsByType('GENDER');
+        $positionIds = $this->GetIdsByType('POSITION');
+        
+
+   
+        return $this->render('admin.user.edit', compact('user', 'gender','positionIds','selectSpecialty','speciatly'));
     }
-    
-    
-    
-    
+
     public function editUser($id)
     {
         // Lấy thông tin mới từ form chỉnh sửa
         $email = $_POST['email'];
-        $password = ($_POST['password']);
+        $password = $_POST['password'];
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
         $address = $_POST['address'];
@@ -203,30 +179,26 @@ class UserController extends BaseController
         $gender = $_POST['gender'];
         $image = $_FILES['image']['name']; // Tên của ảnh mới
         $tmp_name = $_FILES['image']['tmp_name'];
-    
+        $specialty = $_POST['specialty'];
+        $positionId = $_POST['position'];
         // Kiểm tra xem người dùng đã chọn ảnh mới hay không
-        if(isset($_FILES['image']['name']) && $_FILES['image']['name'] != '') {
+        if (isset($_FILES['image']['name']) && $_FILES['image']['name'] != '') {
             $image = $_FILES['image']['name'];
             $tmp_name = $_FILES['image']['tmp_name'];
             move_uploaded_file($tmp_name, 'images/' . $image);
-        } else {
+        }
+         else {
             // Nếu không có ảnh mới được tải lên, giữ nguyên ảnh cũ bằng cách lấy tên ảnh từ cơ sở dữ liệu
             $current_user = $this->user->getUserById($id);
             $image = $current_user->image; // Sử dụng dấu mũi tên để truy cập thuộc tính 'image' của đối tượng stdClass
         }
-    
-
-    
         // Cập nhật thông tin của người dùng trong cơ sở dữ liệu
-        $result = $this->user->updateUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phoneNumber, $id);
-    
-        // Kiểm tra kết quả của việc cập nhật
+        $result = $this->user->UpdateUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phoneNumber,$positionId,$specialty, $id);
+       
         if ($result) {
             redirect('success', 'Cập nhật thông tin thành công', 'admin/user/list');
         } else {
             redirect('error', 'Cập nhật thông tin thất bại', 'admin/user/edit/' . $id);
         }
     }
-    
-    
 }

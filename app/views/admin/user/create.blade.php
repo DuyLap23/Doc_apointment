@@ -29,6 +29,7 @@
                 </div>
                 <form action="{{ route('admin/user/create') }}" class="form-input" method="post"
                     enctype="multipart/form-data">
+                    @csrf
                     <div class=" row form-group pb-4">
                         <div class="col-6">
                             <label for="" class="label pt-2">

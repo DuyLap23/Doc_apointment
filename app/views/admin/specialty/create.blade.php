@@ -29,6 +29,7 @@
                 </div>
                 <form action="{{ route('admin/specialty/create') }}" class="form-input" method="post"
                     enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group pb-4">
                         <label for="" class="label pt-2">
                             Tên

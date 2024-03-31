@@ -5,24 +5,32 @@ class UserModel extends BaseModel
 {
     protected $table = 'users';
 
-
-
+    
     public function SelectUser($role = null)
     {
-        $sql = "SELECT $this->table.*,
-                gender_codetype.value AS gender_value,
-                role_codetype.value AS role_value,
-                position_codetype.value AS position_value
-                FROM $this->table
-                JOIN codetype AS gender_codetype ON $this->table.gender = gender_codetype.id_codetype
-                JOIN codetype AS role_codetype ON $this->table.roleId = role_codetype.id_codetype
-                JOIN codetype AS position_codetype ON $this->table.positionId = position_codetype.id_codetype";
+        $sql = "SELECT
+            $this->table.*,
+            gender_codetype.value AS gender_value,
+            role_codetype.value AS role_value,
+            position_codetype.value AS position_value,
+            specialty.specialty_id AS specialty_id,
+            specialty.specialty_name AS specialty_name
+        FROM
+            $this->table
+        JOIN
+            codetype AS gender_codetype ON $this->table.gender = gender_codetype.id_codetype
+        JOIN
+            codetype AS role_codetype ON $this->table.roleId = role_codetype.id_codetype
+        JOIN
+            codetype AS position_codetype ON $this->table.positionId = position_codetype.id_codetype
+        JOIN
+            specialty AS specialty ON $this->table.specialty = specialty.specialty_id";
+    
+        $params = [];
     
         if ($role !== null) {
             $sql .= " WHERE $this->table.roleId = ?";
             $params = [$role];
-        } else {
-            $params = [];
         }
     
         $this->setQuery($sql);
@@ -36,25 +44,26 @@ class UserModel extends BaseModel
         $this->setQuery($sql);
         return $this->loadAllRows(); // Lấy tất cả các vai trò
     }
-    public function SelectUserByType($type){
-        $sql ="SELECT * FROM codetype WHERE type = ?";
+    public function SelectUserByType($type)
+    {
+        $sql = 'SELECT * FROM codetype WHERE type = ?';
         $this->setQuery($sql);
         return $this->loadAllRows([$type]); //lấy ra các tham số có cùng type
     }
-  
 
-    public function InsertUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber, $roleId, $positionId)
+    public function InsertUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber, $roleId, $positionId, $specialty)
     {
-        $sql = "INSERT INTO $this->table SET email = ?, password = ?, firstName = ?, lastName = ?, image = ?, address = ?, gender = ?, phonenumber = ? , roleId = ?, positionId = ?";
+        $sql = "INSERT INTO $this->table SET email = ?, password = ?, firstName = ?, lastName = ?, image = ?, address = ?, gender = ?, phonenumber = ? , roleId = ?, positionId = ?, specialty = ?";
         $this->setQuery($sql);
-        return $this->execute([$email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber , $roleId, $positionId]);
+        return $this->execute([$email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber, $roleId, $positionId, $specialty]);
     }
 
-    public function UpdateUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber, $id)
+    public function UpdateUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber, $positionId, $specialty, $id)
     {
-        $sql = "UPDATE $this->table SET email = ?, password = ?, firstName = ?, lastName = ?, image = ?, address = ?, gender = ?, phonenumber = ? WHERE id = ?";
+        $sql = "UPDATE $this->table SET email =? , password = ?, firstName =   ?, lastName =  ?, image =  ?, address = ?  , gender =  ?, phonenumber =  ? , positionId = ?,specialty = ? WHERE id = ?";
         $this->setQuery($sql);
-        return $this->execute([$email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber, $id]);
+        return $this->execute([$email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber, $positionId, $specialty, $id]);
+        // echo $sql;
     }
 
     public function DeleteUser($id)
@@ -70,32 +79,17 @@ class UserModel extends BaseModel
         $this->setQuery($sql);
         return $this->loadRow([$id]);
     }
-    public function getGenderById($id)
-    {
-        $sql = "SELECT gender_codetype.value AS gender_value
-                FROM $this->table
-                JOIN codetype AS gender_codetype ON $this->table.gender = gender_codetype.id_codetype
-                WHERE $this->table.id = ?";
-        $this->setQuery($sql);
-        return $this->loadRow([$id]);
-    }
-    
-    public function getAllGenders()
-    {
-        // Truy vấn SQL để lấy danh sách các giới tính
-        $sql = "SELECT id_codetype, value AS gender_value FROM codetype WHERE type = 'GENDER'";
 
-        // Thực hiện truy vấn
+    public function selectSpecialty()
+    {
+        $sql = 'SELECT * FROM specialty';
         $this->setQuery($sql);
         return $this->loadAllRows();
     }
- 
-    public function UpdateUser1($email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber, $id)
+    public function SpecialtyById($specialty_id)
     {
-        $sql = "UPDATE $this->table SET email = ?, password = ?, firstName = ?, lastName = ?, image = ?, address = ?, gender = ?, phonenumber = ? WHERE id = ?";
-        $params = [$email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber, $id];
+        $sql = 'SELECT * FROM specialty WHERE specialty_id = ?';
         $this->setQuery($sql);
-        return $this->execute($params);
+        return $this->loadRow([$specialty_id]);
     }
-    
 }

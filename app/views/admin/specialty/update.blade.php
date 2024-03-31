@@ -29,6 +29,7 @@
 
                 <form action="{{ route('admin/specialty/update/' . $specialty->specialty_id) }}" class="form-input"
                     method="post" enctype="multipart/form-data">
+                    @csrf
                     <input type="hidden" name="specialty_id" id="" value="{{ $specialty->specialty_id }}">
                     <div class="form-group pb-4">
                         <label for="" class="label pt-2">
