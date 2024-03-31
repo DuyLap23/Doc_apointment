@@ -161,22 +161,33 @@ class UserController extends BaseController
     public function detailUser($id)
     {
         $userModel = new UserModel();
-
+    
         // Lấy thông tin người dùng
         $user = $userModel->getUserById($id);
         if (!$user) {
             redirect('error', 'Bác sĩ không tồn tại', 'admin/user/list');
         }
-
+    
         // Lấy thông tin giới tính của bác sĩ
         $gender = $userModel->getGenderById($id);
-
+    
         // Lấy danh sách giới tính
         $genders = $userModel->getAllGenders(); // Đây là phương thức bạn cần thêm vào UserModel
-
+    
+        // Kiểm tra xem giới tính của người dùng đã tồn tại trong danh sách giới tính hay chưa
+        $genderExists = false;
+        foreach ($genders as $key => $value) {
+            if ($value->gender_value == $gender->gender_value) {
+                unset($genders[$key]); // Loại bỏ giới tính của người dùng khỏi danh sách giới tính
+                $genderExists = true;
+                break;
+            }
+        }
+    
         // Truyền dữ liệu người dùng, giới tính và danh sách giới tính vào view
-        return $this->render('admin.user.edit', compact('user','gender',  'genders'));
+        return $this->render('admin.user.edit', compact('user', 'gender', 'genders', 'genderExists'));
     }
+    
     
     
     
@@ -204,9 +215,7 @@ class UserController extends BaseController
             $image = $current_user->image; // Sử dụng dấu mũi tên để truy cập thuộc tính 'image' của đối tượng stdClass
         }
     
-        // Lấy giá trị gender từ phương thức getGenderById
-        $gender_info = $this->user->getGenderById($id);
-        $gender = $gender_info->gender_value;
+
     
         // Cập nhật thông tin của người dùng trong cơ sở dữ liệu
         $result = $this->user->updateUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phoneNumber, $id);
