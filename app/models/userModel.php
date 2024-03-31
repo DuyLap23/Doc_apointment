@@ -79,6 +79,7 @@ class UserModel extends BaseModel
         $this->setQuery($sql);
         return $this->loadRow([$id]);
     }
+    
     public function getAllGenders()
     {
         // Truy vấn SQL để lấy danh sách các giới tính
@@ -89,5 +90,12 @@ class UserModel extends BaseModel
         return $this->loadAllRows();
     }
  
- 
+    public function UpdateUser1($email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber, $id)
+    {
+        $sql = "UPDATE $this->table SET email = ?, password = ?, firstName = ?, lastName = ?, image = ?, address = ?, gender = ?, phonenumber = ? WHERE id = ?";
+        $params = [$email, $password, $firstName, $lastName, $image, $address, $gender, $phonenumber, $id];
+        $this->setQuery($sql);
+        return $this->execute($params);
+    }
+    
 }

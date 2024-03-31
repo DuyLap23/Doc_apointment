@@ -175,7 +175,7 @@ class UserController extends BaseController
         $genders = $userModel->getAllGenders(); // Đây là phương thức bạn cần thêm vào UserModel
 
         // Truyền dữ liệu người dùng, giới tính và danh sách giới tính vào view
-        return $this->render('admin.user.edit', compact('user', 'gender', 'genders'));
+        return $this->render('admin.user.edit', compact('user','gender',  'genders'));
     }
     
     
@@ -200,11 +200,15 @@ class UserController extends BaseController
             move_uploaded_file($tmp_name, 'images/' . $image);
         } else {
             // Nếu không có ảnh mới được tải lên, giữ nguyên ảnh cũ bằng cách lấy tên ảnh từ cơ sở dữ liệu
-            $current_specialty = $this->user->getUserById($id);
-            $image = $current_specialty->image; // Sử dụng dấu mũi tên để truy cập thuộc tính 'image' của đối tượng stdClass
+            $current_user = $this->user->getUserById($id);
+            $image = $current_user->image; // Sử dụng dấu mũi tên để truy cập thuộc tính 'image' của đối tượng stdClass
         }
     
-        // Cập nhật thông tin của bác sĩ trong cơ sở dữ liệu
+        // Lấy giá trị gender từ phương thức getGenderById
+        $gender_info = $this->user->getGenderById($id);
+        $gender = $gender_info->gender_value;
+    
+        // Cập nhật thông tin của người dùng trong cơ sở dữ liệu
         $result = $this->user->updateUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phoneNumber, $id);
     
         // Kiểm tra kết quả của việc cập nhật
@@ -213,7 +217,7 @@ class UserController extends BaseController
         } else {
             redirect('error', 'Cập nhật thông tin thất bại', 'admin/user/edit/' . $id);
         }
-     
     }
+    
     
 }
