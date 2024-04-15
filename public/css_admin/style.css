@@ -735,9 +735,22 @@ body {
 	display: none;
 }
 
-.desc{
+.desc {
 	max-width: 400px;
 }
-.td-w{
+
+.td-w {
 	width: 50px;
+}
+
+.input-hidden {
+opacity: 0;
+}
+
+/* Khi input checkbox được checked */
+.input-hidden:checked ~ .label-time {
+	
+	background-color: #157347;
+	color: #fff;
+	
 }

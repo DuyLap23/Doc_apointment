@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controllers;
-
 use App\Models\UserModel;
 use App\Models\LoginModel;
 
@@ -19,13 +17,11 @@ class UserController extends BaseController
     {
         // Lấy danh sách các vai trò từ phương thức SelectRole()
         $roles = $this->user->SelectRole();
-        // Khởi tạo mảng chứa dữ liệu người dùng cho mỗi vai trò
         $userSelects = [];
-
         // Duyệt qua từng vai trò và lấy danh sách người dùng tương ứng từ phương thức SelectUser()
         foreach ($roles as $role) {
             // Lấy danh sách người dùng có roleId tương ứng từ phương thức SelectUser()
-            $users = $this->user->SelectUser($role->roleId); // Sử dụng -> thay vì ['roleId']
+            $users = $this->user->SelectUser($role->roleId);
 
             // Kiểm tra xem có dữ liệu trả về không
             if (!empty($users)) {
@@ -39,31 +35,22 @@ class UserController extends BaseController
     // hàm này để lấy ra các id có cùng type
     public function GetIdsByType($type)
     {
-        // Truy vấn các id từ bảng 'codetype' mà có 'type' tương ứng
         $ids = $this->user->SelectUserByType($type);
-
-        // Trả về danh sách các id tương ứng
         return $ids;
     }
 
     public function Store()
     {
-        // Lấy danh sách các id có cùng loại 'role'
         $roleIds = $this->GetIdsByType('ROLE');
 
-        // Lấy danh sách các id có cùng loại 'status'
         $statusIds = $this->GetIdsByType('STATUS');
 
-        // Lấy danh sách các id có cùng loại 'time'
         $timeIds = $this->GetIdsByType('TIME');
 
-        // Lấy danh sách các id có cùng loại 'position'
         $positionIds = $this->GetIdsByType('POSITION');
 
-        // Lấy danh sách các id có cùng loại 'gender'
         $genderIds = $this->GetIdsByType('GENDER');
 
-        // Trả về view và truyền danh sách các id tương ứng
         return $this->render('admin.user.create', compact('roleIds', 'statusIds', 'timeIds', 'positionIds', 'genderIds'));
     }
 
@@ -78,10 +65,10 @@ class UserController extends BaseController
         $gender = $_POST['gender'];
         $image = $_FILES['image']['name'];
         $tmp_name = $_FILES['image']['tmp_name'];
-        move_uploaded_file($tmp_name, 'images/' . $image);
         $roleId = 1;
         $positionId = 20;
-        $specialty = 13;
+        $specialty = 17;
+        move_uploaded_file($tmp_name, 'images/' . $image);
         $result = $this->user->InsertUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phoneNumber, $roleId, $positionId, $specialty);
         if ($result) {
             redirect('success', 'Đăng ký thành công', 'admin/user/list');
@@ -153,7 +140,7 @@ class UserController extends BaseController
     //         redirect('error', 'Đăng ký thất bại', 'admin/home/home');
     //     }
     // }
-    
+
     public function detailUser($id)
     {
         $user = $this->user->getUserById($id);
@@ -161,10 +148,8 @@ class UserController extends BaseController
         $selectSpecialty = $this->user->selectSpecialty();
         $gender = $this->GetIdsByType('GENDER');
         $positionIds = $this->GetIdsByType('POSITION');
-        
 
-   
-        return $this->render('admin.user.edit', compact('user', 'gender','positionIds','selectSpecialty','speciatly'));
+        return $this->render('admin.user.edit', compact('user', 'gender', 'positionIds', 'selectSpecialty', 'speciatly'));
     }
 
     public function editUser($id)
@@ -186,15 +171,14 @@ class UserController extends BaseController
             $image = $_FILES['image']['name'];
             $tmp_name = $_FILES['image']['tmp_name'];
             move_uploaded_file($tmp_name, 'images/' . $image);
-        }
-         else {
+        } else {
             // Nếu không có ảnh mới được tải lên, giữ nguyên ảnh cũ bằng cách lấy tên ảnh từ cơ sở dữ liệu
             $current_user = $this->user->getUserById($id);
             $image = $current_user->image; // Sử dụng dấu mũi tên để truy cập thuộc tính 'image' của đối tượng stdClass
         }
         // Cập nhật thông tin của người dùng trong cơ sở dữ liệu
-        $result = $this->user->UpdateUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phoneNumber,$positionId,$specialty, $id);
-       
+        $result = $this->user->UpdateUser($email, $password, $firstName, $lastName, $image, $address, $gender, $phoneNumber, $positionId, $specialty, $id);
+
         if ($result) {
             redirect('success', 'Cập nhật thông tin thành công', 'admin/user/list');
         } else {

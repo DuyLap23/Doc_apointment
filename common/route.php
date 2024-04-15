@@ -12,16 +12,17 @@ $router->filter('auth', function(){
         header('location: ' . BASE_URL . 'login');die;
     }
 });
+$router->get('/',[App\Controllers\HomeController::class,'home']);
 
 $router->get('admin/user/list',[App\Controllers\UserController::class,'userSelect']);
 $router->get('admin/user/del/{id}',[App\Controllers\UserController::class,'UserDel']);
 $router->get('admin/user/store',[App\Controllers\UserController::class,'Store']);
 $router->post('admin/user/create',[App\Controllers\UserController::class,'Create']);
-$router->get('/',[App\Controllers\HomeController::class,'home']);
+// login  
 $router->get('account/login',[App\Controllers\UserController::class,'toLogin']);
 $router->post('account/dangnhap',[App\Controllers\UserController::class,'login']);
 $router->get('account/register',[App\Controllers\UserController::class,'register']);
-
+// account 
 $router->post('admin/user/edit/{id}',[App\Controllers\UserController::class,'editUser']);
 $router->get('admin/user/detail/{id}',[App\Controllers\UserController::class,'detailUser']);
 
@@ -30,9 +31,14 @@ $router->get('admin/user/detail/{id}',[App\Controllers\UserController::class,'de
 $router->get('admin/specialty/store',[App\Controllers\SpecialtyController::class,'Store']);
 $router->post('admin/specialty/create',[App\Controllers\SpecialtyController::class,'Create']);
 $router->get('admin/specialty/list',[App\Controllers\SpecialtyController::class,'speSlt']);
-$router->get('admin/specialty/del/{specialty_id}',[App\Controllers\SpecialtyController::class,'speDel']);
+$router->post('admin/specialty/hide/{specialty_id}',[App\Controllers\SpecialtyController::class,'hide']);
+$router->post('admin/specialty/show/{specialty_id}',[App\Controllers\SpecialtyController::class,'show']);
 $router->get('admin/specialty/edit/{specialty_id}',[App\Controllers\SpecialtyController::class,'Edit']);
 $router->post('admin/specialty/update/{specialty_id}',[App\Controllers\SpecialtyController::class,'Update']);
+
+
+// booking route 
+$router->get('admin/booking/list',[App\Controllers\BookingController::class,'index']);
 
 // khu vực cần quan tâm -----------
 // bắt đầu định nghĩa ra các đường dẫn

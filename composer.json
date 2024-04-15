@@ -8,6 +8,8 @@
     "require": {
         "phroute/phroute": "^2.2",
         "eftec/bladeone": "^4.13",
-        "illuminate/events": "^11.1"
+        "illuminate/events": "^11.1",
+        "vendor/package-name": "^1.0"
+        
     }
 }

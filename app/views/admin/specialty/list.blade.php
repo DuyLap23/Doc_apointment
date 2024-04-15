@@ -37,40 +37,47 @@
                 </div>
                 <div>
                     <a href="{{ route('admin/specialty/store') }}"><button class="btn btn-insert">Thêm</button></a>
-                </div>
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Mã chuyên môn</th>
-                            <th>Tên chuyên môn</th>
-                            <th>Ảnh </th>
-                            <th>Mô tả</th>
-                            <th>Sửa</th>
-                            <th>Xóa</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($specialty as $spl)
-                            <tr>
-                                <td>{{ $spl->specialty_id }}</td>
-                                <td>{{ $spl->specialty_name }}</td>
-                                <td><img src="../../images/{{ $spl->image }}" alt=""></td>
-                                <td>{{ $spl->description }}</td>
-                                <td><a href="{{ route('admin/specialty/edit/' . $spl->specialty_id) }}"><button
-                                            class="btn status completed">Sửa</button></a></td>
-                                <td>
-                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa mục này không?')"
-                                        href="{{ route('admin/specialty/del/' . $spl->specialty_id) }}"><button
-                                            class="btn status pending">Xóa</button></a>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-
+                </div>    
+                <div class="table-data">
+                                <div class="order">
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Mã chuyên môn</th>
+                                                <th>Tên chuyên môn</th>
+                                                <th>Ảnh</th>
+                                                <th>Mô tả</th>
+                                                <th>Sửa</th>
+                                                <th>Xóa</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($specialty as $spl1)
+                                                <tr>
+                                                    <td>{{ $spl1->specialty_id }}</td>
+                                                    <td>{{ $spl1->specialty_name }}</td>
+                                                    <td><img src="../../images/{{ $spl1->image }}" alt=""></td>
+                                                    <td>{{ $spl1->description }}</td>
+                                                    <td><a
+                                                            href="{{ route('admin/specialty/edit/' . $spl1->specialty_id) }}"><button
+                                                                class="btn status completed">Sửa</button></a></td>
+                                                    <td>
+                                                        <form
+                                                            action="{{ route('admin/specialty/hide/' . $spl1->specialty_id) }}"
+                                                            method="POST"
+                                                            onsubmit="return confirm('Bạn có chắc chắn muốn ẩn mục này không?')">
+                                                            @csrf
+                                                            <button type="submit"
+                                                                class="btn status pending">Ẩn</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
             </div>
-
         </div>
     </main>
 

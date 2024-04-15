@@ -92,4 +92,5 @@ class UserModel extends BaseModel
         $this->setQuery($sql);
         return $this->loadRow([$specialty_id]);
     }
+    
 }

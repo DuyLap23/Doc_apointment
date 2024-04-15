@@ -13,8 +13,9 @@ class SpecialtyController extends BaseController
     }
     public function speSlt()
     {
-        $specialty = $this->specialty->getSpecialty();
-        return $this->render('admin.specialty.list', compact('specialty'));
+        $specialty = $this->specialty->getSpecialty('0');
+        $specialtyHide = $this->specialty->getSpecialty('1');
+        return $this->render('admin.specialty.list', compact('specialty','specialtyHide'));
     }
     public function Store()
     {
@@ -24,6 +25,8 @@ class SpecialtyController extends BaseController
     {
         $specialty_name = $_POST['specialty_name'];
         $description = $_POST['specialty_description'];
+
+
         $image = $_FILES['image']['name'];
         $tmp_name = $_FILES['image']['tmp_name'];
         move_uploaded_file($tmp_name, 'images/' . $image);
@@ -44,9 +47,9 @@ class SpecialtyController extends BaseController
         $specialty_name = $_POST['specialty_name'];
         $description = $_POST['specialty_description'];
         $specialty_id = $_POST['specialty_id'];
-        
+
         // Kiểm tra xem có ảnh mới được tải lên không
-        if(isset($_FILES['image']['name']) && $_FILES['image']['name'] != '') {
+        if (isset($_FILES['image']['name']) && $_FILES['image']['name'] != '') {
             $image = $_FILES['image']['name'];
             $tmp_name = $_FILES['image']['tmp_name'];
             move_uploaded_file($tmp_name, 'images/' . $image);
@@ -55,7 +58,7 @@ class SpecialtyController extends BaseController
             $current_specialty = $this->specialty->getSpecialtyById($specialty_id);
             $image = $current_specialty->image; // Sử dụng dấu mũi tên để truy cập thuộc tính 'image' của đối tượng stdClass
         }
-    
+
         // Gọi hàm updateSpecialty với tên ảnh đã được xác định và các thông tin khác
         $result = $this->specialty->updateSpecialty($specialty_id, $specialty_name, $image, $description);
         if ($result) {
@@ -64,14 +67,24 @@ class SpecialtyController extends BaseController
             redirect('error', 'cập nhật thất bại', 'admin/specialty/edit');
         }
     }
-    
-    public function speDel($specialty_id)
+
+  
+    public function hide($specialty_id)
     {
-        $result = $this->specialty->deleteSpecialty($specialty_id);
+        $result = $this->specialty->hideSpecialty($specialty_id);
         if ($result) {
-            redirect('success', 'xóa thành công', 'admin/specialty/list');
+            redirect('success', 'Ẩn thành công', 'admin/specialty/list');
         } else {
-            redirect('error', 'xóa thất bại', 'admin/specialty/list');
+            redirect('error', 'Ẩn thất bại', 'admin/specialty/list');
+        }
+    }
+    public function show($specialty_id)
+    {
+        $result = $this->specialty->showSpecialty($specialty_id);
+        if ($result) {
+            redirect('success', 'show thành công', 'admin/specialty/list');
+        } else {
+            redirect('error', 'show thất bại', 'admin/specialty/list');
         }
     }
 }
