@@ -86,7 +86,7 @@ class UserController extends BaseController
     }
     public function toLogin()
     {
-        return $this->render('account.login');
+        return $this->render('auth.login');
     }
     public function login()
     {
@@ -107,22 +107,22 @@ class UserController extends BaseController
 
                 // Chuyển hướng người dùng đến trang tương ứng
                 if ($_SESSION['roleId'] == '3') {
-                    redirect('success', 'Đăng nhập thành công', '/');
+                    redirect('success', 'Đăng nhập thành công', '');
                 } elseif ($_SESSION['roleId'] == '2') {
                     redirect('success', 'Đăng nhập thành công', 'admin/user/store');
                 } elseif ($_SESSION['roleId'] == '1') {
-                    redirect('success', 'Đăng nhập này', 'admin/user/list');
+                    redirect('success', 'Đăng nhập thành công', 'admin/user/list');
                 }
             } else {
                 // Nếu thông tin đăng nhập không hợp lệ, thông báo lỗi
                 $err = 'Email hoặc mật khẩu không đúng!';
                 // Truyền thông báo lỗi vào view
-                return $this->render('account.login', compact('err'));
+                return $this->render('auth.login', compact('err'));
             }
         } else {
             // Xử lý khi dữ liệu không hợp lệ
             $err = 'Dữ liệu đầu vào không hợp lệ!';
-            return $this->render('account.login', compact('err'));
+            return $this->render('auth.login', compact('err'));
         }
     }
 

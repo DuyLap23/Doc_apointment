@@ -29,8 +29,8 @@
             <span class="text">UniQue</span>
         </a>
         <ul class="side-menu top">
-            <li class="{{ !isset($_GET['url']) || $_GET['url'] === '/' ? 'active' : '' }}">
-                <a href="{{ route('/') }}">
+            <li class="{{ !isset($_GET['url']) || $_GET['url'] === '' ? 'active' : '' }}">
+                <a href="{{ route('') }}">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Trang Chủ</span>
                 </a>

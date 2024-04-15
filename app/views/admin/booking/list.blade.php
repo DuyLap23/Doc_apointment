@@ -43,7 +43,7 @@
                     </form>
                 </div>
 
-                <form action="" method="post" class="form-group mx-auto">
+                <form action="{{ route ('admin/booking/booking') }}" method="post" class="form-group mx-auto">
                     <div class=" container">
                         <div class="d-flex">
                             <div>

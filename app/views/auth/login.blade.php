@@ -4,7 +4,7 @@
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form action="{{ route('account/dangnhap') }}" onsubmit="return sendDangnhap()" method="post" class="sign-in-form">
+          <form action="{{ route('auth/login') }}" onsubmit="return sendDangnhap()" method="post" class="sign-in-form">
             <h2 class="title">Đăng nhập</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
@@ -48,7 +48,7 @@
           </form>
 
 
-          <form action="{{ route('account/register') }}" onsubmit="return sendDangky()" method="post" class="sign-up-form">
+          <form action="{{ route('auth/register') }}" onsubmit="return sendDangky()" method="post" class="sign-up-form">
             <h2 class="title">Đăng kí</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
