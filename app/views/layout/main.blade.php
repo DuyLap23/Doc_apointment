@@ -62,8 +62,8 @@
                     <span class="text">Bình Luận</span>
                 </a>
             </li>
-            <li class="{{ !isset($_GET['url']) || $_GET['url'] === 'admin/booking/list' ? 'active' : '' }}">
-                <a href="{{ route('admin/booking/list') }}">
+            <li class="{{ !isset($_GET['url']) || $_GET['url'] === 'admin/booking/booking' ? 'active' : '' }}">
+                <a href="{{ route('admin/booking/booking') }}">
                     <i class='bx bxs-shopping-bag-alt'></i>
                     <span class="text">Quản Lý Đặt Lịch</span>
                 </a>

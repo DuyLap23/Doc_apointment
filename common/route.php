@@ -18,8 +18,8 @@ $router->get('admin/user/del/{id}',         [App\Controllers\UserController::cla
 $router->get('admin/user/store',            [App\Controllers\UserController::class,'Store']);
 $router->post('admin/user/create',          [App\Controllers\UserController::class,'Create']);
 // login  
-$router->get('auth/tologin',                  [App\Controllers\UserController::class,'toLogin']);
-$router->post('auth/login',                      [App\Controllers\UserController::class,'login']);
+$router->get('auth/tologin',                [App\Controllers\UserController::class,'toLogin']);
+$router->post('auth/login',                 [App\Controllers\UserController::class,'login']);
 $router->get('auth/register',               [App\Controllers\UserController::class,'register']);
 // auth 
 $router->post('admin/user/edit/{id}',       [App\Controllers\UserController::class,'editUser']);
@@ -37,8 +37,8 @@ $router->post('admin/specialty/update/{specialty_id}',  [App\Controllers\Special
 
 
 // booking route 
-$router->get('admin/booking/list',          [App\Controllers\BookingController::class,'index']);
-$router->post('admin/booking/booking',      [App\Controllers\BookingController::class,'booking']);
+$router->get('admin/booking/booking',       [App\Controllers\BookingController::class,'store']);
+$router->post('admin/booking/list',         [App\Controllers\BookingController::class,'booking']);
 
 
 # NB. You can cache the return value from $router->getData() so you don't have to create the routes each request - massive speed gains
