@@ -15,7 +15,7 @@ class BookingController extends BaseController
     public function index()
     {
 
-        return $this->render('admin.booking.add');
+        return $this->render('admin.booking.list');
     }
 
     public function GetIdsByType($type)
@@ -42,6 +42,9 @@ class BookingController extends BaseController
        
         $timeIds = $this->GetIdsByType('TIME');
         return $this->render('admin.booking.add', compact('timeIds', 'userSelects'));
+    }
+    public function booking () {
+        return  "booking";
     }
 
 

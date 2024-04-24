@@ -38,7 +38,8 @@ $router->post('admin/specialty/update/{specialty_id}',  [App\Controllers\Special
 
 // booking route 
 $router->get('admin/booking/booking',       [App\Controllers\BookingController::class,'store']);
-$router->post('admin/booking/list',         [App\Controllers\BookingController::class,'booking']);
+$router->post('admin/booking/booking',       [App\Controllers\BookingController::class,'booking']);
+$router->post('admin/booking/list',         [App\Controllers\BookingController::class,'index']);
 
 
 # NB. You can cache the return value from $router->getData() so you don't have to create the routes each request - massive speed gains
