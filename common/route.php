@@ -12,18 +12,20 @@ $router->filter('auth', function(){
         header('location: ' . BASE_URL . 'login');die;
     }
 });
+// login  
+$router->get('auth/tologin',                [App\Controllers\LoginController::class,'toLogin']);
+$router->post('auth/login',                 [App\Controllers\LoginController::class,'login']);
+$router->get('auth/register',               [App\Controllers\LoginController::class,'register']);
+// auth 
+$router->post('admin/user/edit/{id}',       [App\Controllers\UserController::class,'editUser']);
+$router->get('admin/user/detail/{id}',      [App\Controllers\UserController::class,'detailUser']);
+
+// User 
 $router->get('',[App\Controllers\HomeController::class,'home']);
 $router->get('admin/user/list',             [App\Controllers\UserController::class,'userSelect']);
 $router->get('admin/user/del/{id}',         [App\Controllers\UserController::class,'UserDel']);
 $router->get('admin/user/store',            [App\Controllers\UserController::class,'Store']);
 $router->post('admin/user/create',          [App\Controllers\UserController::class,'Create']);
-// login  
-$router->get('auth/tologin',                [App\Controllers\UserController::class,'toLogin']);
-$router->post('auth/login',                 [App\Controllers\UserController::class,'login']);
-$router->get('auth/register',               [App\Controllers\UserController::class,'register']);
-// auth 
-$router->post('admin/user/edit/{id}',       [App\Controllers\UserController::class,'editUser']);
-$router->get('admin/user/detail/{id}',      [App\Controllers\UserController::class,'detailUser']);
 
 
 // router specialty 
